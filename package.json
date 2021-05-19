@@ -25,7 +25,8 @@
     "web-vitals": "^1.0.1",
     "websocket": "^1.0.34",
     "wgo": "^3.0.0-alpha.7",
-    "ws": "^7.4.5"
+    "ws": "^7.4.5",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start",
