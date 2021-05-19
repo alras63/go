@@ -244,17 +244,17 @@ export const Content = ({ history, searchType, setSearchType }) => {
           <Titlemain>
             <Top>
               <Logotype alt="logo" src={Logo} />
-              ГоСтратег
+              {laguageVariation["GoStrategist"]}
             </Top>
             {/* Эффективная система подсказок в игре Го */}
           </Titlemain>
           <ContantMain>
             <ButtonCustomAndArrow mb={0} onClick={() => history.push('/gameBoard')} disabled={gameId === null}>
-              Продолжить игру
+              {laguageVariation['continue']}
           </ButtonCustomAndArrow>
    
             <ButtonCustomAndArrow mb={0} onClick={() => { document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("Random")}} disabled={gameId !== null}>
-              Игра со случайным соперником
+              {laguageVariation['PlayWithARandomOpponent']}
           </ButtonCustomAndArrow>
             <ButtonCustomAndArrow mb={0} onClick={() => {document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("WithAi")}} disabled={gameId !== null}>
 
@@ -269,20 +269,20 @@ export const Content = ({ history, searchType, setSearchType }) => {
                 setSearchType("");
               }}
             >
-              Обучение
+              {laguageVariation['learning']}
           </ButtonCustomAndArrow>{" "}
           <ButtonCustomAndArrow  onClick={() => {
                 history.push(HINTS);
                 setSearchType("");
-              }}>Подсказки</ButtonCustomAndArrow> {" "}
-            <ButtonCustomAndArrow mb={0} onClick={() => history.push('/liders')}>Рейтинг игроков</ButtonCustomAndArrow>{" "}
+              }}>{laguageVariation['Hints']}</ButtonCustomAndArrow> {" "}
+            <ButtonCustomAndArrow mb={0} onClick={() => history.push('/liders')}>{laguageVariation['RatingPlayer']}</ButtonCustomAndArrow>{" "}
             <ButtonCustomAndArrow
               onClick={() => {
                 history.push(INFO_URL);
                 setSearchType("");
               }}
             >
-              Информация для участников
+              {laguageVariation['Information']}
           </ButtonCustomAndArrow>{" "}
           </ContantMain>
           <FooterMain>

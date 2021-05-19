@@ -7,6 +7,7 @@ import {
   HEATMAP_ZONE_QUARTER,
   HEATMAP_ZONE_QUARTER_ONE,
 } from "./types";
+import { laguageVariation } from "../../../../language";
 
 const Wrapper = styled.div`
   width: 90%;
@@ -68,7 +69,7 @@ const Help = ({
             scores && handleHelp({ type: "map", id: 22 })
           }
         >
-          Захват начальной территории
+          {laguageVariation['CaptureOfTheInitialTerritory']}
         </HelpItem>
 
         <HelpItem
@@ -217,7 +218,7 @@ return (
           scores && handleHelp({ type: "map", id: 22 })
         }
       >
-        Захват начальной территории
+        {laguageVariation['CaptureOfTheInitialTerritory']}
       </HelpItem>
       <HelpItem
         active={activeHelpId === 221}
@@ -225,7 +226,7 @@ return (
           scores && handleHelp({ type: "map", id: 221 })
         }
       >
-        Атака по двум четвертям
+        {laguageVariation['Twoquarterattack']}
       </HelpItem>
     </HelpWrapper>
     <HelpWrapper>
@@ -235,7 +236,7 @@ return (
           scores && handleHelp({ type: "map", id: 223 })
         }
       >
-        Защита
+        {laguageVariation['Protection']}
       </HelpItem>
     </HelpWrapper>
     <HelpWrapper>
@@ -245,7 +246,7 @@ return (
           scores && handleHelp({ type: "map", id: 224 })
         }
       >
-        Продолжать играть?
+        {laguageVariation['KeepPlaying']}
       </HelpItem>
     </HelpWrapper>
   </Wrapper>

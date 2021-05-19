@@ -5,6 +5,7 @@ import Logo from "../../assets/img/logo.png";
 import { ButtonCustom } from "../../components/ButtonCustom";
 import { Input, InputProfile } from "../../components/InputCustom";
 import { MAIN_URL } from "../../constants/routes";
+import { laguageVariation } from "../../language";
 import { getProfile, getSgf, getFullLog } from "../../store/Profile/actions";
 
 const Wrapper = styled.div`
@@ -290,10 +291,10 @@ const Profile = ({ history }) => {
             </Right>
             <ButtonRow>
               <ButtonDownloadFile onClick={()=>dispatch(getSgf(item.game_id))}>
-                Файл
+                {laguageVariation['File']}
               </ButtonDownloadFile>
               <ButtonDownloadFile onClick={()=>dispatch(getFullLog(item.game_id))}>
-                Лог
+                {laguageVariation['Log']}
               </ButtonDownloadFile>
             </ButtonRow>
           </GameHistoryItem>) : (
@@ -339,16 +340,16 @@ const Profile = ({ history }) => {
       <Info>
         <InfoHeader>
         <Logotype alt="logo" src={Logo} />
-        <GameName>ГоСтратег</GameName>
+        <GameName>{laguageVariation['GoStrategist']}</GameName>
         </InfoHeader>
-        <UserProfileSpan>Профиль пользователя</UserProfileSpan>
+        <UserProfileSpan>{laguageVariation['Profile']}</UserProfileSpan>
         <UserProfileInfo>
         <Avatar alt="avatar" src={playerInfo?.avatar} />
           <UserBlock>
           <NickName>
           {playerInfo?.nickname}
           </NickName>
-          <PlayerLvl>начинающий игрок</PlayerLvl>
+          <PlayerLvl>{laguageVariation['PlayerLvl']}</PlayerLvl>
           </UserBlock>
         </UserProfileInfo>
         <InfoPlayer>
@@ -362,7 +363,7 @@ const Profile = ({ history }) => {
           />
           </InputBlock>
           <InputBlock>
-          <Label>Имя пользователя:</Label>
+          <Label>{laguageVariation['NickName']}:</Label>
           <InputProfile
            
            
@@ -372,7 +373,7 @@ const Profile = ({ history }) => {
           /></InputBlock>
 
           <InputBlock>
-          <Label>Рейтинг:</Label>
+          <Label>{laguageVariation['Rating']}:</Label>
           <Input   disabled value={playerInfo?.pts} />
           </InputBlock>
 
@@ -382,14 +383,14 @@ const Profile = ({ history }) => {
       </Container>
       <ContainerOne>
         <GameHeader>
-          <GameHeaderTitle>Партии пользователя</GameHeaderTitle>
+          <GameHeaderTitle>{laguageVariation['UserParties']}</GameHeaderTitle>
           <ButtonCustom
             width="30%"
             onClick={() => {
               history.push(MAIN_URL);
             }}
           >
-        В меню
+        {laguageVariation['BackToMenu']}
       </ButtonCustom>
       </GameHeader>
       <GameHistory>

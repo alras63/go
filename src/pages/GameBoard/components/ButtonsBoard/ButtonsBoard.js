@@ -3,6 +3,7 @@
 
 import React from "react";
 import styled from "styled-components";
+import { laguageVariation } from "../../../../language";
 
 const Wrapper = styled.div`
 width: 100%;
@@ -22,9 +23,9 @@ const TabsHelp = ({ hint,stepColor, enemyPass, yourColor, you, opponent, turns, 
     setResign }) => {
   return (
     <Wrapper>
-          <ButtonTabs onClick={() => setHint('hint')}>Подсказки</ButtonTabs>
-          <ButtonTabs onClick={() => setHint('123')}>Сценарии</ButtonTabs>
-          <ButtonTabs onClick={() => setHint('')}>Ход игры</ButtonTabs>
+          <ButtonTabs onClick={() => setHint('hint')}>{laguageVariation['Hints']}</ButtonTabs>
+          <ButtonTabs onClick={() => setHint('123')}>{laguageVariation['Scenarios']}</ButtonTabs>
+          <ButtonTabs onClick={() => setHint('')}>{laguageVariation['GameProgress']}</ButtonTabs>
     </Wrapper>
   );
 };
