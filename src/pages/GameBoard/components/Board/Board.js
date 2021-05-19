@@ -4,6 +4,7 @@ import { Goban } from "react-goban";
 import styled from "styled-components";
 import { markersClear, setMapStones } from "../../../../store/Board/actions";
 import { client } from "../../../../Socket";
+import send from './../../../../api/Send';
 
 const Text = styled.p`
   font-size: 24px;
@@ -77,7 +78,7 @@ const Board = ({
   );
 
   const handleTurn = (stonePosition) => {
-    client.send(JSON.stringify([7, "go/game", {command: "move", token: "1cfc52aacaba0507e66d74cd878020f071457220", place: stonePosition.toString().toLowerCase(), game_id: 8}]));
+    send(JSON.stringify([7, "go/game", {command: "move", token: "1cfc52aacaba0507e66d74cd878020f071457220", place: stonePosition.toString().toLowerCase(), game_id: 8}]));
     let valid = true;
     for (const key in coordinates) {
       if (key === stonePosition) {

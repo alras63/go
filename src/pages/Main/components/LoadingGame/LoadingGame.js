@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { client, token } from '../../../../Socket.js'
 import { clearGameId } from "../../../../store/GameCreate/actions";
 import { Input } from "../../../../components/InputCustom";
+import send from './../../../../api/Send';
 
 const Text = styled.p`
   font-size: 36px;
@@ -29,8 +30,8 @@ export const LoadingGame = ({ text, setSearchType, setOpponent, searchType, game
 
   useEffect(() => {
     if (gameId) {
-      client.send(JSON.stringify([5, 'go/game']));
-      client.send(JSON.stringify([7, "go/game", {command: "auth", token: localStorage.getItem('GoGameToken'), game_id: gameId}]));
+      send(JSON.stringify([5, 'go/game']));
+      send(JSON.stringify([7, "go/game", {command: "auth", token: localStorage.getItem('GoGameToken'), game_id: gameId}]));
 
       client.onmessage = function(e) {
         
@@ -55,7 +56,7 @@ export const LoadingGame = ({ text, setSearchType, setOpponent, searchType, game
   }, [gameId]);
 
   const cancelGame = async () => {
-    client.send(JSON.stringify([7, "go/game", {command: "resign", token: token, game_id: gameId}]));
+    send(JSON.stringify([7, "go/game", {command: "resign", token: token, game_id: gameId}]));
     await dispatch(clearGameId())
 
     setSearchType("");

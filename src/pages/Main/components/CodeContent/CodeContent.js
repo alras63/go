@@ -5,6 +5,7 @@ import { ButtonCustom } from "../../../../components/ButtonCustom";
 import { Input } from "../../../../components/InputCustom";
 import { clearGameId, createGameCode, joinGameWithCode } from "../../../../store/GameCreate/actions";
 import { client, token } from "../../../../Socket";
+import send from './../../../../api/Send';
 
 const Text = styled.p`
   font-size: 36px;
@@ -74,7 +75,7 @@ export const CodeContent = ({ gameId, setSearchType }) => {
   }
 
   const cancelGame = async () => {
-    client.send(JSON.stringify([7, "go/game", {command: "resign", token: token, game_id: gameId}]));
+    send(JSON.stringify([7, "go/game", {command: "resign", token: token, game_id: gameId}]));
     await dispatch(clearGameId())
     setSearchType("")
   }

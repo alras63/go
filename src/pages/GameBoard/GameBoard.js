@@ -233,7 +233,7 @@ const GameBoard = ({ history }) => {
       setActiveHelpId(null);
       setHelpType('')
       dispatch(setBlocked(true))
-      client.send(JSON.stringify([7, "go/game", {command: "move", token: token, place: coord.toString().toLowerCase(), game_id: game_id}]));
+      send(JSON.stringify([7, "go/game", {command: "move", token: token, place: coord.toString().toLowerCase(), game_id: game_id}]));
      
     }
   }
@@ -243,12 +243,12 @@ const GameBoard = ({ history }) => {
     setActiveHelpId(null);
     setHelpType('')
     dispatch(setBlocked(true))
-    client.send(JSON.stringify([7, "go/game", {command: "pass", token: token, game_id: game_id}]));
+    send(JSON.stringify([7, "go/game", {command: "pass", token: token, game_id: game_id}]));
   }
 
   const resign = () => {
     dispatch(setBlocked(true))
-    client.send(JSON.stringify([7, "go/game", {command: "resign", token: token, game_id: game_id}]));
+    send(JSON.stringify([7, "go/game", {command: "resign", token: token, game_id: game_id}]));
   }
 
   const handleHelp = ({type, multipleHandleCount, id, count} ) => {
