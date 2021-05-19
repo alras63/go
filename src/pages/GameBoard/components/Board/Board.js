@@ -85,6 +85,25 @@ const Board = ({
         valid = false;
       }
     }
+    
+    var columnStep = stonePosition[0];
+    var rowStep = parseInt(stonePosition[1]+stonePosition[2]);
+    var colorVrag = yourColor === "white" ? "black" : "white";
+    let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
+    var numberColumn = alpha.indexOf(columnStep, 0);
+    if(
+         (numberColumn == 0 || (coordinates[alpha[numberColumn-1]+rowStep] !== undefined && coordinates[alpha[numberColumn-1]+rowStep] == colorVrag)) &&
+         (numberColumn == 12 || (coordinates[alpha[numberColumn+1]+rowStep] !== undefined && coordinates[alpha[numberColumn+1]+rowStep] == colorVrag)) &&
+         (rowStep == 13 || (coordinates[alpha[numberColumn]+(rowStep+1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep+1)] == colorVrag)) &&
+         (rowStep == 1 || (coordinates[alpha[numberColumn]+(rowStep-1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep-1)] == colorVrag))
+     ){
+        valid = false;
+        alert('Совершать самоубийство запрещено!');
+    }
+    
+    //Сюда смертельного хода!!
+
+
     if (valid && currentColor === yourColor) {
       setStonePosition(stonePosition)
       //setCoordinates({ ...coordinates, [stonePosition]: currentColor });

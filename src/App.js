@@ -3,10 +3,13 @@ import './scss/main.scss'
 import { Provider } from "react-redux";
 import { createReduxStore } from "./store";
 import Routes from './routes';
+
 const store = createReduxStore();
 
-const App = () => {
 
+
+const App = () => {
+  
   return (
     <Provider store={store}>
       <Routes />

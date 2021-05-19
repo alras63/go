@@ -8,12 +8,15 @@ import { Winner } from "../Winner";
 import { Error } from "../Error";
 import { INFO_URL, PROFILE_URL } from "../../../../constants/routes";
 
+import {Buttonslang, laguageVariation} from '../../../../language';
+
 import { EDUCATION, HINTS } from "../../../../constants/routes";
 import { createRandomGame, createGameWithAi } from "../../../../store/GameCreate/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { ButtonCustomAndArrow, ButtonCustomForm } from "../../../../components/ButtonCustom";
 import Logo from "../../../../assets/img/logo.png";
 import Grafik from '../../../../assets/img/grafik.png'
+
 const Wrapper = styled.div`
   // width: 613px;
   // margin: 0 auto;
@@ -237,6 +240,7 @@ export const Content = ({ history, searchType, setSearchType }) => {
     <Wrapper>
       <ContainerOne>
         <Left>
+          <Buttonslang history={history}/>
           <Titlemain>
             <Top>
               <Logotype alt="logo" src={Logo} />
@@ -253,10 +257,11 @@ export const Content = ({ history, searchType, setSearchType }) => {
               Игра со случайным соперником
           </ButtonCustomAndArrow>
             <ButtonCustomAndArrow mb={0} onClick={() => {document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("WithAi")}} disabled={gameId !== null}>
-              Игра с ИИ
+
+              {laguageVariation['gameAI']}
           </ButtonCustomAndArrow>
             <ButtonCustomAndArrow onClick={() => {document.getElementById('overflow-wrapper').style.display = "flex";setSearchType("Code")}} mb={0} disabled={gameId !== null}>
-              Закрытая игра
+  {laguageVariation['privateGame']}
           </ButtonCustomAndArrow>
           <ButtonCustomAndArrow
               onClick={() => {
