@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Logo from "../../../../assets/img/logo_game.png";
 import {MAIN_URL} from '../../../../constants/routes'
+import { laguageVariation } from "../../../../language";
 
 const Wrapper = styled.div`
   display: flex;
@@ -83,7 +84,7 @@ export const Header = ({ history, gameId, setHint, hint, setResign, helpType, se
         <Left>
           <LogoWrapper onClick={() => history.push(MAIN_URL)}>
             <Logotype alt="logo" src={Logo} />
-            ГоСтратег
+            {laguageVariation['GoStrategist']}
           </LogoWrapper>
         </Left>
       </Content>

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { markersClear, setMapStones } from "../../../../store/Board/actions";
 import { client } from "../../../../Socket";
 import send from './../../../../api/Send';
+import { laguageVariation } from "../../../../language";
 
 const Text = styled.p`
   font-size: 24px;
@@ -98,7 +99,7 @@ const Board = ({
          (rowStep == 1 || (coordinates[alpha[numberColumn]+(rowStep-1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep-1)] == colorVrag))
      ){
         valid = false;
-        alert('Совершать самоубийство запрещено!');
+        alert(laguageVariation['SuicideAlert']);
     }
     
     //Сюда смертельного хода!!
@@ -154,8 +155,8 @@ const Board = ({
         />
 
         <ButtonsBoard>
-        <Text onClick={() => setPass()}>Пас</Text>
-            <Text onClick={() => setResign()}>Сдаться</Text>
+        <Text onClick={() => setPass()}>{laguageVariation['Pass']}</Text>
+            <Text onClick={() => setResign()}>{laguageVariation['Surrender']}</Text>
         </ButtonsBoard>
     </Wrapper>
   );

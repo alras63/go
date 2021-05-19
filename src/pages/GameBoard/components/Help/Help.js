@@ -7,6 +7,7 @@ import {
   HEATMAP_ZONE_QUARTER,
   HEATMAP_ZONE_QUARTER_ONE,
 } from "./types";
+import { laguageVariation } from "../../../../language";
 
 const Wrapper = styled.div`
   width: 90%;
@@ -68,7 +69,7 @@ const Help = ({
             scores && handleHelp({ type: "map", id: 22 })
           }
         >
-          Захват начальной территории
+          {laguageVariation['CaptureOfTheInitialTerritory']}
         </HelpItem>
 
         <HelpItem
@@ -77,7 +78,7 @@ const Help = ({
             scores && handleHelp({ type: "single", id: 1, count: 1 })
           }
         >
-          Лучший ход
+          {laguageVariation['BestMove']}
         </HelpItem>
 		
 		<HelpItem
@@ -86,7 +87,7 @@ const Help = ({
             scores && handleHelp({ type: "futuredGame", id: 31, count: 4 })
           }
         >
-          Развитие игры на 4 хода вперёд
+          {laguageVariation['GameDevelopment4']}
         </HelpItem>
 		
 		
@@ -96,7 +97,7 @@ const Help = ({
             scores && handleHelp({ type: "single_war", id: 2, count: 1 })
           }
         >
-          Лучший ход соперника
+          {laguageVariation['TheOpponentsBestMove']}
         </HelpItem>
         <HelpItem
           active={activeHelpId === HEATMAP_FULL}
@@ -104,7 +105,7 @@ const Help = ({
             scores && handleHelp({ type: "map", id: HEATMAP_FULL })
           }
         >
-          Тепловая карта всей доски. Детализированная
+          {laguageVariation['HeatmapDetailed']}
         </HelpItem>
         <HelpItem
           active={activeHelpId === 16}
@@ -113,7 +114,7 @@ const Help = ({
             handleHelp({ type: "multiple", multipleHandleCount: 4, id: 16 })
           }
         >
-          Показать лучший из заданных 3 ходов
+          {laguageVariation['Showbest3']}
         </HelpItem>
 		
 		
@@ -123,7 +124,7 @@ const Help = ({
             scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER })
           }
         >
-          В какой четверти доски сейчас лучший ход?
+          {laguageVariation['WhichQuarter']}
         </HelpItem>
 		<HelpItem
           active={activeHelpId === 24}
@@ -131,7 +132,7 @@ const Help = ({
             scores && handleHelp({ type: "map", id: 24 })
           }
         >
-          Лучшая половина
+          {laguageVariation['TheBetterHalf']}
         </HelpItem>
 		
 		<HelpItem
@@ -140,7 +141,7 @@ const Help = ({
 			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 1 })
           }
         >
-          Тепловая карта 1-ой четверти доски
+          {laguageVariation['Heatmap1']}
         </HelpItem>
 		
 		<HelpItem
@@ -149,7 +150,7 @@ const Help = ({
 			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 2 })
           }
         >
-          Тепловая карта 2-ой четверти доски
+          {laguageVariation['Heatmap2']}
         </HelpItem>
 		<HelpItem
           active={activeHelpId === 4}
@@ -157,7 +158,7 @@ const Help = ({
 			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 3 })
           }
         >
-          Тепловая карта 3-ой четверти доски
+          {laguageVariation['Heatmap3']}
         </HelpItem>
 		<HelpItem
           active={activeHelpId === 5}
@@ -165,7 +166,7 @@ const Help = ({
 			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 4 })
           }
         >
-          Тепловая карта 4-ой четверти доски
+          {laguageVariation['Heatmap4']}
         </HelpItem>
 		
 		
@@ -173,7 +174,7 @@ const Help = ({
           active={activeHelpId === 34}
           onClick={() => scores && handleHelp({ type: "score", id: 34 })}
         >
-          Кто побеждает на данный момент?
+         {laguageVariation['WhoWinning']}
         </HelpItem>
       </HelpWrapper>
     </Wrapper>
@@ -217,7 +218,7 @@ return (
           scores && handleHelp({ type: "map", id: 22 })
         }
       >
-        Захват начальной территории
+        {laguageVariation['CaptureOfTheInitialTerritory']}
       </HelpItem>
     </HelpWrapper>
   </Wrapper>
