@@ -50,7 +50,7 @@ const ButtonsBoard = styled.div`
   justify-content: center;
   margin-top: 20px;
 `;
-
+const steps = ['asd'];
 const Board = ({
   lastMarkers,
   socket,
@@ -80,8 +80,84 @@ const Board = ({
     (state) => state.board.classNamesMapStones
   );
   
- 
+  const isInArray = function(array, value) {
+		for (var i=0; i<array.length; i++) {
+			if (array[i] == value) {
+				return true;
+			}
+		}
+		return false;
+	};
 
+  let LAST_STEP = '';
+
+  var getSosedi = function(point){
+    var columnStep = point[0];
+    var rowStep = parseInt(point[1]+point[2]);
+    var colorVrag = yourColor === "white" ? "black" : "white";
+    let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
+    var numberColumn = alpha.indexOf(columnStep, 0);
+
+    return [
+      alpha[numberColumn-1]+rowStep,
+      alpha[numberColumn+1]+rowStep,
+      alpha[numberColumn]+(rowStep+1),
+      alpha[numberColumn]+(rowStep-1)
+    ];
+  };
+
+  const getCapturedPoints = function(point, sosedi11) {	
+		var capPoints = new Array();
+		var sosedi = getSosedi(point);
+
+		// Check for captures in every direction
+		for (var i = 0; i < sosedi.length; i++) {
+			var side = sosedi[i];
+      
+			// Check for captures at neighboring point (nPoint)
+      if (coordinates[side] != yourColor && coordinates[side] !== undefined) {
+          //console.log(getLibertyPoints(side));
+					if (!isInArray(capPoints, side) && getLibertyPoints(side).length == 0) {
+            //console.log(point+' !!!!!!!!!!!');
+            //console.log(side);
+					  	capPoints = capPoints.concat(side);
+					}
+				}
+		}
+    //console.log(capPoints);
+		return capPoints;
+	};
+  
+  var getLibertyPoints = function(point, chainPoints, libPoints) {	
+		// If chainPoints or libPoints are null, make them empty arrays
+		chainPoints = chainPoints || new Array();
+		libPoints = libPoints || new Array();
+		
+		// Check for liberties in every direction
+    var sosedi = getSosedi(point);
+		for (var i = 0; i < sosedi.length; i++) {
+			var side = sosedi[i];
+				if (coordinates[side] == coordinates[point]) {
+          //console.log('nado');
+        //console.log(coordinates[side] +'=>'+ yourColor);
+       // console.log('nado');
+					// Same piece. Add that piece's liberties to this chain's liberties.
+					chainPoints.push(point);
+					if (!isInArray(chainPoints,side)) {
+						// TODO: find out why this works
+						getLibertyPoints(side, chainPoints, libPoints);
+					}
+				}
+				else if (coordinates[side] === undefined && side !== LAST_STEP) {
+					// Empty. Add one liberty (if it's new).
+					if (!isInArray(libPoints, side)) {
+						libPoints.push(side);
+					}
+        }
+		}
+		return libPoints;
+	};
+  
   const handleTurn = (stonePosition) => {
     //send(JSON.stringify([7, "go/game", {command: "move", token: "1cfc52aacaba0507e66d74cd878020f071457220", place: stonePosition.toString().toLowerCase(), game_id: 8}]));
     let valid = true;
@@ -96,27 +172,34 @@ const Board = ({
     // testCords[stonePosition] = yourColor;
     // testCords.map();
     //console.log(testCords);
-
+    LAST_STEP = stonePosition;
     var columnStep = stonePosition[0];
     var rowStep = parseInt(stonePosition[1]+stonePosition[2]);
     var colorVrag = yourColor === "white" ? "black" : "white";
     let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
     var numberColumn = alpha.indexOf(columnStep, 0);
+
+    var sosedi = [
+      alpha[numberColumn-1]+rowStep,
+      alpha[numberColumn+1]+rowStep,
+      alpha[numberColumn]+(rowStep+1),
+      alpha[numberColumn]+(rowStep-1)
+    ];
+    var captures = getCapturedPoints(stonePosition, sosedi);
     if(
          (numberColumn == 0 || (coordinates[alpha[numberColumn-1]+rowStep] !== undefined && coordinates[alpha[numberColumn-1]+rowStep] == colorVrag)) &&
          (numberColumn == 12 || (coordinates[alpha[numberColumn+1]+rowStep] !== undefined && coordinates[alpha[numberColumn+1]+rowStep] == colorVrag)) &&
          (rowStep == 13 || (coordinates[alpha[numberColumn]+(rowStep+1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep+1)] == colorVrag)) &&
-         (rowStep == 1 || (coordinates[alpha[numberColumn]+(rowStep-1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep-1)] == colorVrag))
+         (rowStep == 1 || (coordinates[alpha[numberColumn]+(rowStep-1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep-1)] == colorVrag)) &&
+         captures.length == 0
      ){
         valid = false;
         alert(laguageVariation['SuicideAlert']);
     }
-    const steps = [];
     if(steps[steps.length-1] == stonePosition){
       valid = false;
         alert('КО-борьба');
     }
-
 
     if (valid && currentColor === yourColor) {
       steps.push(stonePosition);

@@ -28,6 +28,14 @@ import {
   scoresSuperiority,
 } from "../../api/board";
 
+import {
+  SET_BLOCKED,
+} from "./types";
+
+import {
+  setBlocked
+} from "../../store/Board/actions";
+
 function* fetchGetHintBestMoves_saga(action) {
   const { payload } = action;
   try {
@@ -118,22 +126,25 @@ function* fetchGetHintHeatmapFull_saga(action) {
   }
 }
 
-function* fetchGetHintHeatmapZone_saga(action) {
+export function* fetchGetHintHeatmapZone_saga(action) {
   const { payload } = action;
-  console.log(action);
   try {
+    if(payload.typeHint === 'superiority'){
+      
+      var superioty = yield call(scoresSuperiority, getToken(), payload.game_id);
+      console.log(superioty);
+      if(superioty.hint.score > 40){
+        alert("Перевес очков и ситуация на доске не самая лучшая и продолжать играть не сильно имеет смысл");
+      } else {
+        alert("Продолжайте играть");
+      }
+      yield put({ type: SET_BLOCKED, payload: false})
+      return;
+    }
     const res = yield call(helpHeatmapZone, getToken(), payload.game_id, payload.isQuarter);
     if (res.hint) {
       if(payload.typeHint !== undefined){
-        if(payload.typeHint === 'superiority'){
-          var superioty = yield call(scoresSuperiority, getToken(), payload.game_id);
-          console.log(superioty);
-          if(superioty.hint.score > 40){
-            alert("Перевес очков и ситуация на доске не самая лучшая и продолжать играть не сильно имеет смысл");
-          } else {
-            alert("Продолжайте играть");
-          }
-        }
+
         if(payload.typeHint === 'customHintProtection'){
           var superQuerter = yield call(helpHeatmapZone, getToken(), payload.game_id, 1);
 
