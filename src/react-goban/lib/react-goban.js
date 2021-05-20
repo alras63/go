@@ -1,5 +1,5 @@
 "use strict";
-var createReactClass = require('create-react-class');
+
 var _extends =
   Object.assign ||
   function (target) {
@@ -25,7 +25,7 @@ var _extends =
 var React = require("react");
 var ReactDOM = require("react-dom");
 var SVGoban = require("svgoban");
-
+ 
 /**
  * Converts shape list into React SVG elements.
  *
@@ -54,7 +54,7 @@ function toElem(shapes, callback) {
   return shapes;
 }
 
-var LabelsLayer = createReactClass({
+var LabelsLayer = React.createClass({
   displayName: "LabelsLayer",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -76,7 +76,7 @@ var LabelsLayer = createReactClass({
   },
 });
 
-var BackgroundLayer = createReactClass({
+var BackgroundLayer = React.createClass({
   displayName: "BackgroundLayer",
 
   render: function render() {
@@ -89,7 +89,7 @@ var BackgroundLayer = createReactClass({
   },
 });
 
-var GridLayer = createReactClass({
+var GridLayer = React.createClass({
   displayName: "GridLayer",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -105,7 +105,7 @@ var GridLayer = createReactClass({
   },
 });
 
-var StarPointsLayer = createReactClass({
+var StarPointsLayer = React.createClass({
   displayName: "StarPointsLayer",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -121,7 +121,7 @@ var StarPointsLayer = createReactClass({
   },
 });
 
-var MarkersLayer = createReactClass({
+var MarkersLayer = React.createClass({
   handleClick: function handleClick(intersection) {
     const arr = [];
     for (let i in this.props.markers) {
@@ -146,7 +146,7 @@ var MarkersLayer = createReactClass({
   },
 });
 exports.MarkersLayer = MarkersLayer;
-var MapLayer = createReactClass({
+var MapLayer = React.createClass({
   handleClick: function handleClick(intersection) {
     const arr = [];
     for (let i in this.props.mapStones) {
@@ -172,7 +172,7 @@ var MapLayer = createReactClass({
   },
 });
 
-var LastMarkersLayer = createReactClass({
+var LastMarkersLayer = React.createClass({
 			displayName: 'LastMarkerLayer',
 
 			render: function render() {
@@ -189,7 +189,7 @@ var LastMarkersLayer = createReactClass({
  * 1st approach: bulk rendering of all stones/placeholders
  *
  */
-var FlatStonesLayer = createReactClass({
+var FlatStonesLayer = React.createClass({
   displayName: "FlatStonesLayer",
 
   handleClick: function handleClick(intersection) {
@@ -209,7 +209,7 @@ var FlatStonesLayer = createReactClass({
  * 2nd approach: stones/placeholders layer is a composite list of Stone components individually rendered
  *
  */
-var CompositeStonesLayer = createReactClass({
+var CompositeStonesLayer = React.createClass({
   displayName: "CompositeStonesLayer",
 
   handleClick: function handleClick(intersection) {
@@ -247,7 +247,7 @@ var CompositeStonesLayer = createReactClass({
   },
 });
 
-var Stone = createReactClass({
+var Stone = React.createClass({
   displayName: "Stone",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -268,7 +268,7 @@ var Stone = createReactClass({
   },
 });
 
-var Style = createReactClass({
+var Style = React.createClass({
   displayName: "Style",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -283,7 +283,7 @@ var Style = createReactClass({
   },
 });
 
-var Definitions = createReactClass({
+var Definitions = React.createClass({
   displayName: "Definitions",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -364,7 +364,7 @@ var Definitions = createReactClass({
 
 /** @todo Add property to handle SVG className (next color to play) */
 
-var Goban = createReactClass({
+var Goban = React.createClass({
   displayName: "Goban",
   getDefaultProps: function getDefaultProps() {
     return {
@@ -399,22 +399,19 @@ var Goban = createReactClass({
           size: this.props.size,
           coordSystem: this.props.coordSystem,
         }),
-       
-        React.createElement(MarkersLayer, {
-          size: this.props.size,
-          markers: this.props.markers,
-          positions: this.props.stones,
-          onIntersectionClick: this.props.onIntersectionClick,
-        }),
-        
         React.createElement(CompositeStonesLayer, {
           size: this.props.size,
           set: this.props.stones,
           nextToPlay: this.props.nextToPlay,
           onIntersectionClick: this.props.onIntersectionClick,
         }),
+        React.createElement(MarkersLayer, {
+          size: this.props.size,
+          markers: this.props.markers,
+          positions: this.props.stones,
+          onIntersectionClick: this.props.onIntersectionClick,
+        }),
         React.createElement(LastMarkersLayer, { size: this.props.size, lastMarkers: this.props.lastMarkers, positions: this.props.stones }),
-        
         React.createElement(MapLayer, {
           size: this.props.size,
           mapStones: this.props.mapStones,
