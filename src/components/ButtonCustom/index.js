@@ -89,7 +89,7 @@ const BtnArrow = styled.button`
   margin-top: ${(props) => (props.mt ? `${props.mt}px` : "0")};
   margin-bottom: ${(props) => (props.mb ? `${props.mb}px` : "0")};
   background-color: transparent;
-  color: white;
+  color: #000;
   cursor: pointer;
   font-size: ${(props) => (props.fontSize ? props.fontSize : "28px")};
   border: none;
@@ -99,6 +99,7 @@ const BtnArrow = styled.button`
   }
   &:hover{
     color: #000;
+    opacity: 0.6;
   }
   &:disabled{
     color: gray;

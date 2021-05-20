@@ -20,8 +20,8 @@ import Grafik from '../../../../assets/img/grafik.png'
 const Wrapper = styled.div`
   // width: 613px;
   // margin: 0 auto;
-  width: 50%;
-  height: 100%;
+  width: 100vw;
+  min-height: 100%;
 
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,7 @@ const Container = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  padding: 120px 0px;
+  padding: 20px 0px;
 `;
 
 const ContainerOne = styled.div`
@@ -42,7 +42,7 @@ const ContainerOne = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 120px 0px;
+  padding: 20px 0px;
 `;
 
 const Form = styled.form`
@@ -53,14 +53,15 @@ const Top = styled.div`
   display: flex;
   align-self: flex-start;
   margin-bottom: 49px;
-  color: white;
-  font-size: 32px;
-  align-items: center;\
+  color: #000;
+  font-size: 28px;
+  align-items: center;
 `;
 
 const Logotype = styled.img`
   height: auto;
   width: 60px;
+  margin-right: 20px;
 `;
 
 const Tabs = styled.div`
@@ -85,17 +86,21 @@ const Span = styled.p`
 `;
 
 const Left = styled.div`
-  width: 90%;
-  height: 100%;
+  width: 40%;
+  min-height: 100%;
   display: flex;
-flex-direction: column
+flex-direction: column;
+background-color: #fff;
+color: #000;
+padding: 30px
 `;
 
 const Titlemain = styled.h1`
-  color: white;
-  font-size: 48px;
-  margin-bottom: 40px;
+  color: #000;
+  font-size: 28px;
+  margin-bottom: 0px;
   flex: 0 0 auto;
+
 `;
 
 const ContantMain = styled.div`
@@ -103,30 +108,13 @@ flex: 1 0 auto;
 `;
 
 const FooterMain = styled.div`
-font-size: 20px;
+font-size: 18px;
 font-weight: bold;
 
-color: white;
+color: #000;
 flex: 0 0 auto;
 `;
 
-const Hello = styled.p`
-  font-size: 32px;
-  color: gray;  
-  margin: 10px 0px;
-`;
-const DecriptionOne = styled.p`
-font-size: 48px;
-  margin: 10px 0px;
-`;
-const DecriptionTwo = styled.p`
-  font-size: 32px;
-  margin: 10px 0px;
-`;
-const Label = styled.label`
-  font-size: 24px;
-  margin-top: 20px;
-`;
 
 const FixedBlock = styled.div`
   position: fixed;
@@ -218,7 +206,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
 `;
-const RightContent = styled.div`
+const PlayerInfo = styled.div`
   width: auto;
   display: flex;
   align-items: center;
@@ -227,7 +215,7 @@ const RightContent = styled.div`
   flex-direction: row-reverse;
 `;
 
-export const Content = ({ history, searchType, setSearchType }) => {
+export const Content = ({ history, searchType, setSearchType,  nickname, pts, avatar, winrate }) => {
   const dispatch = useDispatch();
   const gameId = useSelector(state => state.createGame.id);
 
@@ -245,15 +233,31 @@ export const Content = ({ history, searchType, setSearchType }) => {
             <Top>
               <Logotype alt="logo" src={Logo} />
               {laguageVariation["GoStrategist"]}
+              <PlayerInfo onClick={() => {
+            if (searchType !== "ConnectRandom" && searchType !== "ConnectCode") {
+              history.push(PROFILE_URL);
+              setSearchType("");
+            }
+          }}>
+            <Info>
+              <Name>{nickname || ""}</Name>
+              <ScoreWrapper>
+                <Pts style={{ marginRight: 16 }}>{pts || 0}pts</Pts>
+                <Pts>{winrate || ""}</Pts>
+              </ScoreWrapper>
+            </Info>
+            <Avatar alt="avatar" src={avatar} />
+          </PlayerInfo>
             </Top>
+            
             {/* Эффективная система подсказок в игре Го */}
           </Titlemain>
           <ContantMain>
-            <ButtonCustomAndArrow mb={0} onClick={() => history.push('/gameBoard')} disabled={gameId === null}>
+            <ButtonCustomAndArrow textColor="#000" mb={0} onClick={() => history.push('/gameBoard')} disabled={gameId === null}>
               {laguageVariation['continue']}
           </ButtonCustomAndArrow>
    
-            <ButtonCustomAndArrow mb={0} onClick={() => { document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("Random")}} disabled={gameId !== null}>
+            <ButtonCustomAndArrow  textColor="#000" mb={0} onClick={() => { document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("Random")}} disabled={gameId !== null}>
               {laguageVariation['PlayWithARandomOpponent']}
           </ButtonCustomAndArrow>
             <ButtonCustomAndArrow mb={0} onClick={() => {document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("WithAi")}} disabled={gameId !== null}>
@@ -314,9 +318,10 @@ const Info = styled.div`
 
 
 const Name = styled.p`
-  font-size: 48px;
+  font-size: 28px;
   line-height: 56px;
   font-weight: 700;
+  margin-left: 30px;
 `;
 
 const ScoreWrapper = styled.div`
@@ -324,15 +329,15 @@ const ScoreWrapper = styled.div`
 `;
 
 const Pts = styled.p`
-  font-size: 20px;
-  line-height: 23px;
+  font-size: 18px;
+  line-height: 16px;
   color: #5b5b5b;
 `;
 
 const Avatar = styled.img`
   border-radius: 100px;
-  margin-left: 20px;
-  width: 115px;
+  margin-left: 120px;
+  width: 70px;
 `;
 
 const Search = styled.img`
@@ -356,27 +361,11 @@ export const ContentOne = ({ history, searchType, setSearchType, nickname, pts, 
     <Wrapper>
       <Container>
         <Right>
-          <RightContent onClick={() => {
-            if (searchType !== "ConnectRandom" && searchType !== "ConnectCode") {
-              history.push(PROFILE_URL);
-              setSearchType("");
-            }
-          }}>
-            <Info>
-              <Name>{nickname || ""}</Name>
-              <ScoreWrapper>
-                <Pts style={{ marginRight: 16 }}>{pts || 0}pts</Pts>
-                <Pts>{winrate || ""}</Pts>
-              </ScoreWrapper>
-            </Info>
-            <Avatar alt="avatar" src={avatar} />
-          </RightContent>
+      
         </Right>
         
       </Container>
-      <div>
-            <Images src={Grafik}></Images>
-          </div>
+ 
       {!searchType ? (
         <>
 

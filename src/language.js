@@ -181,22 +181,29 @@ export function getLang() {
 const Wrapper = styled.div `
 `;
 
+const Button = styled.button`
+
+`;
+
+
 
 export const Buttonslang = ({ history }) => {
-    return ( <Wrapper >
-        <button onClick = {
+    return ( <Wrapper style={{marginBottom: 50}}>
+        <Button className="button ru is-large has-text-white" onClick = {
             function() {
                 localStorage.setItem('language', 'ru');
                 console.log(history);
                 window.location.reload();
             }
-        } > RUS </button> <button onClick = {
+        } > <span class="icon">RU
+        </span> </Button> <Button className="button en is-large has-text-white" onClick = {
             function() {
                 console.log(history);
                 localStorage.setItem('language', 'eng');
                 window.location.reload();
             }
-        } > ENG </button> </Wrapper >
+        } >     <span class="icon">EN
+        </span> </Button> </Wrapper >
 
     );
 };

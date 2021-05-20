@@ -8,7 +8,7 @@ import { getCurrentGame } from "../../store/GameCreate/actions";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -49,15 +49,6 @@ const Main = ({ history, location }) => {
         avatar={playerInfo.avatar}
       />
 
-      <ContentOne
-        history={history}
-        searchType={searchType}
-        setSearchType={setSearchType}
-        nickname={playerInfo.nickname}
-        pts={playerInfo.pts}
-        avatar={playerInfo.avatar}
-        winrate={playerInfo.winrate}
-      />
     </Wrapper>
   );
 };

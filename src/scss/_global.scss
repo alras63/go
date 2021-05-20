@@ -56,3 +56,42 @@ body.fixed {
 #root {
   min-height: 100vh;
 }
+
+button.button{
+  margin:4px;
+  width: 40px;
+  height: 40px;
+  filter: grayscale(50%);
+  background-size:400%;
+  background-position:center;
+  border-radius:50%;
+  border-color:transparent;
+  transition: all 100ms ease-in-out;
+}
+button.button:hover {
+  background-size:120%;
+  filter: grayscale(10%);
+}
+button.button span {
+  opacity:1;
+  transition: opacity 100ms ease-in-out;
+  color: #fff;
+}
+button.button:hover span {
+  opacity:0
+}
+button.button.fr{
+  background-image:url('https://i.ibb.co/0Q2jMPC/fr.png');
+}
+button.button.en{
+  background-image:url('https://i.ibb.co/6JMwR5j/en.png');
+}
+button.button.ru{
+  background-image:url('https://i.ibb.co/hRm2d44/ru.png');
+}
+.langswitcher{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:90vh;
+}

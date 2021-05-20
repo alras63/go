@@ -10,30 +10,40 @@ import { EDUCATION_LOGIN, HINTS_LOGIN } from "../../../constants/routes";
 
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
+  background-color: #786354;
 `;
 
 const Container = styled.div`
-  width: 50%;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 120px 0px;
+  padding: 20px 0px;
 `;
 
 const ContainerOne = styled.div`
-  background-color: #786354;
-  width: 50%;
+  background-color: #fff;
+  width: 40%;
   margin: 0 auto;
   height: 100%;
   display: flex;
+  color: #000;
   justify-content: center;
-  align-items: center;
-  padding: 120px 0px;
+  align-items: baseline;
+  padding: 120px 80px;
+  @media (max-width: 908px) {
+    width: 95%;
+    padding: 20px 10px;
+  }
+`;
+
+const FormDiv = styled.div`
+  display: flex;
+  @media (max-width: 908px) {
+    display: block;
+  }
 `;
 
 const Form = styled.form`
@@ -44,7 +54,7 @@ const Top = styled.div`
   display: flex;
   align-self: flex-start;
   margin-bottom: 49px;
-  color: white;
+  color: #000;
   font-size: 32px;
   align-items: center;\
 `;
@@ -83,7 +93,7 @@ flex-direction: column
 `;
 
 const Titlemain = styled.h1`
-  color: white;
+  color: #000;
   font-size: 48px;
   margin-bottom: 40px;
   flex: 0 0 auto;
@@ -97,7 +107,7 @@ const FooterMain = styled.div`
 font-size: 20px;
 font-weight: bold;
 
-color: white;
+color: #000;
 flex: 0 0 auto;
 `;
 
@@ -170,29 +180,16 @@ const Auth = ({history, location}) => {
               }}>Обучение</ButtonCustomAndArrow>
             <ButtonCustomAndArrow >Интересные партии</ButtonCustomAndArrow>
           </ContantMain>
-          <FooterMain>
-            SGK Team, 2021
-          </FooterMain>
-        </Left>
-      </ContainerOne>
-      <Container>
+          <Container>
         <Left>
-          <Hello>
-            Привет!
-          </Hello>
-          <DecriptionOne>
-            Добро пожаловать в наше коммьюнити
-          </DecriptionOne>
-          <DecriptionTwo>
-            Чтобы продолжить, нужно быть авторизованным пользователем
-          </DecriptionTwo>
           
-        <Form onSubmit={handleAuth}>
-         <Label>
-            E-mail или имя пользователя
-          </Label>
+          
+        <Form  onSubmit={handleAuth}>
+          <FormDiv>
           <Input
-            mt={20}
+            mt={0}
+            mr={20}
+            mb={10}
             type="email"
             placeholder="Email"
             onChange={setEmail}
@@ -201,18 +198,10 @@ const Auth = ({history, location}) => {
             color="#000"
             background="#ecdfd6"
           />
-          {activeTab === "reg" ? (
-           <Label>
-           Имя пользователя
-         </Label>
-          ) : (
-            <Label>
-            Пароль
-          </Label>
-          )}
+        
           {activeTab === "reg" ? (
             <Input
-              mt={10}
+              mt={0}
               mb={30}
               placeholder="Nickname"
               onChange={setNickname}
@@ -236,7 +225,9 @@ const Auth = ({history, location}) => {
               background="#ecdfd6"
             />
           )}
-          <ButtonCustomForm type="submit">
+          </FormDiv>
+         
+          <ButtonCustomForm type="submit" mb={30}>
           {activeTab === "reg" ? (
             <Span>
               Зарегистрироваться
@@ -251,11 +242,11 @@ const Auth = ({history, location}) => {
           <Tabs>
           {activeTab === "reg" ? (
             <Span>
-              Зарегистрированны уже?
+              Уже зарегистрированы?
             </Span>
           ) : (
             <Span>
-              Ещё не зарегитсрированны?
+              Ещё не зарегитсрированы?
             </Span>
           )}
 
@@ -279,6 +270,16 @@ const Auth = ({history, location}) => {
         </Form>
         </Left>
       </Container>
+          <FooterMain>
+            SGK Team, 2021
+          </FooterMain>
+          
+        </Left>
+
+       
+        
+      </ContainerOne>
+      
     </Wrapper>
   );
 };

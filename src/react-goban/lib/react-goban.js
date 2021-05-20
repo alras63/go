@@ -1,5 +1,5 @@
 "use strict";
-
+var createReactClass = require('create-react-class');
 var _extends =
   Object.assign ||
   function (target) {
@@ -54,7 +54,7 @@ function toElem(shapes, callback) {
   return shapes;
 }
 
-var LabelsLayer = React.createClass({
+var LabelsLayer = createReactClass({
   displayName: "LabelsLayer",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -76,7 +76,7 @@ var LabelsLayer = React.createClass({
   },
 });
 
-var BackgroundLayer = React.createClass({
+var BackgroundLayer = createReactClass({
   displayName: "BackgroundLayer",
 
   render: function render() {
@@ -89,7 +89,7 @@ var BackgroundLayer = React.createClass({
   },
 });
 
-var GridLayer = React.createClass({
+var GridLayer = createReactClass({
   displayName: "GridLayer",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -105,7 +105,7 @@ var GridLayer = React.createClass({
   },
 });
 
-var StarPointsLayer = React.createClass({
+var StarPointsLayer = createReactClass({
   displayName: "StarPointsLayer",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -121,7 +121,7 @@ var StarPointsLayer = React.createClass({
   },
 });
 
-var MarkersLayer = React.createClass({
+var MarkersLayer = createReactClass({
   handleClick: function handleClick(intersection) {
     const arr = [];
     for (let i in this.props.markers) {
@@ -146,7 +146,7 @@ var MarkersLayer = React.createClass({
   },
 });
 exports.MarkersLayer = MarkersLayer;
-var MapLayer = React.createClass({
+var MapLayer = createReactClass({
   handleClick: function handleClick(intersection) {
     const arr = [];
     for (let i in this.props.mapStones) {
@@ -172,7 +172,7 @@ var MapLayer = React.createClass({
   },
 });
 
-var LastMarkersLayer = React.createClass({
+var LastMarkersLayer = createReactClass({
 			displayName: 'LastMarkerLayer',
 
 			render: function render() {
@@ -189,7 +189,7 @@ var LastMarkersLayer = React.createClass({
  * 1st approach: bulk rendering of all stones/placeholders
  *
  */
-var FlatStonesLayer = React.createClass({
+var FlatStonesLayer = createReactClass({
   displayName: "FlatStonesLayer",
 
   handleClick: function handleClick(intersection) {
@@ -209,7 +209,7 @@ var FlatStonesLayer = React.createClass({
  * 2nd approach: stones/placeholders layer is a composite list of Stone components individually rendered
  *
  */
-var CompositeStonesLayer = React.createClass({
+var CompositeStonesLayer = createReactClass({
   displayName: "CompositeStonesLayer",
 
   handleClick: function handleClick(intersection) {
@@ -247,7 +247,7 @@ var CompositeStonesLayer = React.createClass({
   },
 });
 
-var Stone = React.createClass({
+var Stone = createReactClass({
   displayName: "Stone",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -268,7 +268,7 @@ var Stone = React.createClass({
   },
 });
 
-var Style = React.createClass({
+var Style = createReactClass({
   displayName: "Style",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -283,7 +283,7 @@ var Style = React.createClass({
   },
 });
 
-var Definitions = React.createClass({
+var Definitions = createReactClass({
   displayName: "Definitions",
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -364,7 +364,7 @@ var Definitions = React.createClass({
 
 /** @todo Add property to handle SVG className (next color to play) */
 
-var Goban = React.createClass({
+var Goban = createReactClass({
   displayName: "Goban",
   getDefaultProps: function getDefaultProps() {
     return {
