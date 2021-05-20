@@ -6,13 +6,15 @@ console.log(token)
 
 export const client = new W3CWebSocket('ws://172.104.137.176:41239');
 
-client.onerror = function() {
+client.onerror = function(err) {
+  console.log(err);
   console.log('Connection Error');
 };
 
 
 client.onopen = function() {};
 
-client.onclose = function() {
+client.onclose = function(res) {
+  console.log(res)
   console.log('echo-protocol Client Closed');
 };

@@ -60,7 +60,7 @@ const Logotype = styled.img`
 `;
 
 const Name = styled.p`
-  font-size: 48px;
+  font-size: 28px;
   line-height: 56px;
   font-weight: 700;
 `;
@@ -70,7 +70,7 @@ const ScoreWrapper = styled.div`
 `;
 
 const Pts = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   line-height: 23px;
   color: #5b5b5b;
 `;

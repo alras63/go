@@ -128,7 +128,7 @@ export const ButtonCustomAndArrow = ({
   <BtnArrow
     width={width}
     fontWeight={fontWeight}
-    textAlign={textAlign}
+    textAlign="left"
     padding={padding}
     fontSize={fontSize}
     height={height}

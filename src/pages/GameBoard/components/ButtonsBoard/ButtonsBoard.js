@@ -14,7 +14,7 @@ background-color: #EBEBEB;
 
 const ButtonTabs = styled.span`
     padding: 10px 20px;
-    font-size: 22px;
+    font-size: 24px;
     display: inline-block;
 `;
 

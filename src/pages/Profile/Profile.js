@@ -13,6 +13,9 @@ height: 100vh;
 position: relative;
 display: flex;
 align-items: center;
+@media (max-width: 908px) {
+  flex-direction: column;
+}
 `;
 
 const ContainerOne = styled.div`
@@ -23,19 +26,28 @@ const ContainerOne = styled.div`
     justify-content: center;
     align-items: center;
     padding: 120px 0px;
-    max-height: 100vh;
+    min-height: 100vh;
     overflow-y: scroll;
+
+    @media (max-width: 908px) {
+      width: 100%;
+      overflow-y: initial;
+    }
 `;
 
 const Container = styled.div`
 background-color: #786354;
 width: 50%;
 margin: 0 auto;
-height: 100%;
+min-height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
 padding: 120px 0px;
+@media (max-width: 908px) {
+  width: 100%;
+  overflow-y: initial;
+}
 `;
 
 const InfoHeader = styled.div`
@@ -119,7 +131,7 @@ const Name = styled.p`
 `;
 const Pts = styled.p`
   color: #c8d7b5;
-  font-size: 12px;
+  font-size: 18px;
   line-height: 14px;
 `;
 const Span = styled.p`
@@ -222,7 +234,7 @@ const UserProfileInfo = styled.div`
 
 const NickName = styled.span`
   color: #fff;
-  font-size: 32px;
+  font-size: 28px;
 `;
 
 

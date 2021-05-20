@@ -11,7 +11,7 @@ import { Input } from "../../../../components/InputCustom";
 import send from './../../../../api/Send';
 
 const Text = styled.p`
-  font-size: 36px;
+  font-size: 28px;
   line-height: 42px;
   margin-bottom: 86px;
   text-align: center;

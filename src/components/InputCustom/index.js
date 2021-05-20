@@ -48,7 +48,7 @@ const InputCustomProfile = styled.input`
 
 const ErrorText = styled.p`
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: red;
   margin: 32px 0 0;
 `;

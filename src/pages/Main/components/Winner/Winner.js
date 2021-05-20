@@ -4,13 +4,13 @@ import { ButtonCustom } from "../../../../components/ButtonCustom";
 import { useSelector } from "react-redux";
 
 const Text = styled.p`
-  font-size: 36px;
+  font-size: 28px;
   line-height: 42px;
   text-align: center;
 `;
 
 const ScoreText = styled.p`
-  font-size: 36px;
+  font-size: 28px;
   line-height: 42px;
   text-align: center;
   display: flex;
@@ -28,13 +28,13 @@ const Info = styled.div`
 `;
 
 const Name = styled.p`
-  font-size: 48px;
+  font-size: 28px;
   line-height: 56px;
   font-weight: 700;
 `;
 
 const Score = styled.p`
-  font-size: 36px;
+  font-size: 28px;
   line-height: 42px;
   font-weight: 700;
   position: relative;
@@ -67,7 +67,7 @@ const ScoreWrapper = styled.div`
 `;
 
 const Pts = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   color: #c1c1c1;
 `;
 

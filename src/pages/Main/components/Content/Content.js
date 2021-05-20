@@ -36,13 +36,14 @@ const Container = styled.div`
 
 const ContainerOne = styled.div`
   background-color: #786354;
-  width: 100%;
+  width: 100vw;
   // margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0px;
+  
 `;
 
 const Form = styled.form`
@@ -56,6 +57,10 @@ const Top = styled.div`
   color: #000;
   font-size: 28px;
   align-items: center;
+  @media (max-width: 908px) {
+    flex-direction: column;
+    align-items: baseline;
+  }
 `;
 
 const Logotype = styled.img`
@@ -89,10 +94,14 @@ const Left = styled.div`
   width: 40%;
   min-height: 100%;
   display: flex;
-flex-direction: column;
-background-color: #fff;
-color: #000;
-padding: 30px
+  flex-direction: column;
+  background-color: #fff;
+  color: #000;
+  padding: 30px;
+  @media (max-width: 908px) {
+    width: 95%;
+    padding: 20px 10px;
+  }
 `;
 
 const Titlemain = styled.h1`
@@ -289,7 +298,7 @@ export const Content = ({ history, searchType, setSearchType,  nickname, pts, av
               {laguageVariation['Information']}
           </ButtonCustomAndArrow>{" "}
           </ContantMain>
-          <FooterMain>
+          <FooterMain style={{marginTop: 40}}>
             SGK Team, 2021
           </FooterMain>
         </Left>
@@ -338,6 +347,10 @@ const Avatar = styled.img`
   border-radius: 100px;
   margin-left: 120px;
   width: 70px;
+  @media (max-width: 908px) {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
 `;
 
 const Search = styled.img`

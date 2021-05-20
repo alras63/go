@@ -72,7 +72,7 @@ const TreangleRight = styled.div`
   border-left: 38px solid #a4a4a4;
 `;
 const Scores = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   padding-top: 10px;
   color: green;

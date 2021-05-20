@@ -54,13 +54,13 @@ const SubName = styled.div`
   width: auto;
   font-weight: bold;
   padding: 0 10px;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #FFF;
   z-index: 10;
 `;
 const Rating = styled.div`
   width: 30%;
-  font-size: 20px;
+  font-size: 18px;
   position: relative;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@ const Rate = styled.div`
 `;
 const Scores = styled.div`
   width: 20%;
-  font-size: 22px;
+  font-size: 24px;
   padding-left: 10px;
   display: flex;
   align-items: center;

@@ -8,7 +8,7 @@ import { client, token } from "../../../../Socket";
 import send from './../../../../api/Send';
 
 const Text = styled.p`
-  font-size: 36px;
+  font-size: 28px;
   line-height: 42px;
   text-align: center;
 `;
@@ -29,7 +29,7 @@ const CustomCodeContent = ({ setSearchType, setContentType }) => (
 const CreateGame = ({ setSearchType, cancelGame, code }) => (
   <>
     <Text>Код вашей игры:</Text>
-    <Input value={code || 'Ожидайте'} textAlign="center" disabled mt={40} mb={30} />
+    <Input value={code || 'Ожидайте'} textAlign="center" disabled mt={40} mb={30} color={"#000"} />
     <ButtonCustom mb={30} onClick={() => setSearchType("CodeEnter")}>
       Начать игру
     </ButtonCustom>
@@ -40,7 +40,7 @@ const CreateGame = ({ setSearchType, cancelGame, code }) => (
 const JoinGame = ({ setSearchType, cancelGame, code, setCode }) => (
   <>
     <Text>Укажите код игры:</Text>
-    <Input mt={30} mb={30} onChange={setCode} name="code" />
+    <Input mt={30} mb={30} onChange={setCode} name="code"   color={"#000"} border={"1px solid #000"} />
     <ButtonCustom
       mb={30}
       disabled={!code}

@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 const Title = styled.p`
   font-weight: bold;
-  font-size: 36px;
+  font-size: 28px;
   line-height: 42px;
 `;
 

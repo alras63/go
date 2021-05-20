@@ -544,7 +544,7 @@ code {
 
 @keyframes pulse {
   from {
-    font-size: 30px;
+    font-size: 28px;
   }
   to {
     top: 24px;

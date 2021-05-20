@@ -5,7 +5,7 @@ import AvatarImage from "../../../../assets/img/avatar-2.png";
 import { GAME_URL } from "../../../../constants/routes";
 
 const Text = styled.p`
-  font-size: 36px;
+  font-size: 28px;
   line-height: 42px;
   margin-bottom: 30px;
   text-align: center;
@@ -22,7 +22,7 @@ const Info = styled.div`
 `;
 
 const Name = styled.p`
-  font-size: 48px;
+  font-size: 28px;
   line-height: 56px;
   font-weight: 700;
 `;
@@ -32,7 +32,7 @@ const ScoreWrapper = styled.div`
 `;
 
 const Pts = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   color: #c1c1c1;
 `;
 

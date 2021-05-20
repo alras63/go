@@ -173,6 +173,7 @@ const Board = ({
     // testCords.map();
     //console.log(testCords);
     LAST_STEP = stonePosition;
+
     var columnStep = stonePosition[0];
     var rowStep = parseInt(stonePosition[1]+stonePosition[2]);
     var colorVrag = yourColor === "white" ? "black" : "white";

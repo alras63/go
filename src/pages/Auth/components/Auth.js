@@ -55,7 +55,7 @@ const Top = styled.div`
   align-self: flex-start;
   margin-bottom: 49px;
   color: #000;
-  font-size: 32px;
+  font-size: 28px;
   align-items: center;\
 `;
 
@@ -94,7 +94,7 @@ flex-direction: column
 
 const Titlemain = styled.h1`
   color: #000;
-  font-size: 48px;
+  font-size: 28px;
   margin-bottom: 40px;
   flex: 0 0 auto;
 `;
@@ -104,7 +104,7 @@ flex: 1 0 auto;
 `;
 
 const FooterMain = styled.div`
-font-size: 20px;
+font-size: 18px;
 font-weight: bold;
 
 color: #000;
@@ -112,16 +112,16 @@ flex: 0 0 auto;
 `;
 
 const Hello = styled.p`
-  font-size: 32px;
+  font-size: 28px;
   color: gray;  
   margin: 10px 0px;
 `;
 const DecriptionOne = styled.p`
-font-size: 48px;
+font-size: 28px;
   margin: 10px 0px;
 `;
 const DecriptionTwo = styled.p`
-  font-size: 32px;
+  font-size: 28px;
   margin: 10px 0px;
 `;
 const Label = styled.label`
