@@ -25,6 +25,10 @@ import {
   hintCapturing,
 } from "../../store/Board/actions";
 
+import {
+  fetchGetHintHeatmapZone_saga
+} from "../../store/Board/saga";
+
 import { clearGameId } from "../../store/GameCreate/actions";
 
 import { client, token } from '../../Socket.js'
@@ -135,7 +139,7 @@ const GameBoard = ({ history }) => {
   },[])
 
   client.onmessage = function(e) {
-    console.log(e);
+    //console.log(e);
     var isAdmin = false;
     setEnemyPass(false)
     if (typeof e.data === 'string') {
@@ -144,13 +148,14 @@ const GameBoard = ({ history }) => {
         if (jsonData.payload.currentMap) {
           setCoordinates(mapMap(jsonData.payload.currentMap));
           if(countSteps < stepMain){
-            console.log(stepMain);
+            //console.log(stepMain);
             countSteps++;
             if(countSteps == startStep){
               isAdmin = window.confirm("Не желаете воспользоваться сценарием помощи - Захват начальное территории?");
         
               if(isAdmin){
                 dispatch(hintHeatmapZone(game_id, false, 'customHintCapture'));
+                dispatch(setBlocked(false))
               }
             }
           }
@@ -203,7 +208,7 @@ const GameBoard = ({ history }) => {
   var lastYorXount = 0;
   //Проверка на убийствинность
   const mapMap = (map) => {
-    console.log(map);
+    //console.log(map);
     let coords = {};
     let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
     map.map((row, rowId) => row.map((cell, colId) => {
@@ -288,7 +293,7 @@ const GameBoard = ({ history }) => {
       setMultipleCount(multipleHandleCount);
     }
     if (type === "map") {
-      dispatch(setBlocked(true))
+      console.log(dispatch(setBlocked(true)))
       setHelpType("map");
       setMapType("map");
       switch (id)
@@ -307,7 +312,7 @@ const GameBoard = ({ history }) => {
         break;
 
         case 224:
-          dispatch(hintHeatmapZone(game_id, false, 'superiority'));
+          console.log(dispatch(hintHeatmapZone(game_id, false, 'superiority')));
         break;
 
 
