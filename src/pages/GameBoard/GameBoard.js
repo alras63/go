@@ -135,6 +135,7 @@ const GameBoard = ({ history }) => {
   },[])
 
   client.onmessage = function(e) {
+    console.log(e);
     var isAdmin = false;
     setEnemyPass(false)
     if (typeof e.data === 'string') {
@@ -200,7 +201,9 @@ const GameBoard = ({ history }) => {
     }
   };
   var lastYorXount = 0;
+  //Проверка на убийствинность
   const mapMap = (map) => {
+    console.log(map);
     let coords = {};
     let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
     map.map((row, rowId) => row.map((cell, colId) => {
@@ -387,6 +390,7 @@ const GameBoard = ({ history }) => {
           setCurrentColor={setStepColor}
           yourColor={yourColor}
           helpType={helpType}
+          mapMap={mapMap}
           setMultipleHint={(val) => setMultipleHintFunc(val)}
           multipleHint={multipleHint}
           multipleCount={multipleCount}
@@ -394,6 +398,7 @@ const GameBoard = ({ history }) => {
           setStonePosition={move}
           setHelpType={setHelpType}
           setMapType={setMapType}
+          setCoordinates = {setCoordinates}
           setMultipleType={setMultipleType}
           setActiveHelpId={setActiveHelpId}
           classNames={classNames}
