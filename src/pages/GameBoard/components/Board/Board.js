@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Goban } from "react-goban";
+//import { Goban } from "react-goban";
+import { Goban } from "../../../../react-goban";
 import styled from "styled-components";
 import { markersClear, setMapStones } from "../../../../store/Board/actions";
 import { client } from "../../../../Socket";
@@ -62,6 +63,7 @@ const Board = ({
   multipleHint,
   coordinates,
   setCoordinates,
+  mapMap,
   setHelpType,
   setMultipleType,
   setActiveHelpId,
@@ -77,16 +79,24 @@ const Board = ({
   const classNamesMapStones = useSelector(
     (state) => state.board.classNamesMapStones
   );
+  
+ 
 
   const handleTurn = (stonePosition) => {
-    send(JSON.stringify([7, "go/game", {command: "move", token: "1cfc52aacaba0507e66d74cd878020f071457220", place: stonePosition.toString().toLowerCase(), game_id: 8}]));
+    //send(JSON.stringify([7, "go/game", {command: "move", token: "1cfc52aacaba0507e66d74cd878020f071457220", place: stonePosition.toString().toLowerCase(), game_id: 8}]));
     let valid = true;
+    var testCords = {};
     for (const key in coordinates) {
+      testCords[key] = coordinates[key];
       if (key === stonePosition) {
         valid = false;
       }
     }
-    
+    //testCords.push(stonePosition, yourColor);
+    // testCords[stonePosition] = yourColor;
+    // testCords.map();
+    //console.log(testCords);
+
     var columnStep = stonePosition[0];
     var rowStep = parseInt(stonePosition[1]+stonePosition[2]);
     var colorVrag = yourColor === "white" ? "black" : "white";
@@ -101,11 +111,15 @@ const Board = ({
         valid = false;
         alert(laguageVariation['SuicideAlert']);
     }
-    
-    //Сюда смертельного хода!!
+    const steps = [];
+    if(steps[steps.length-1] == stonePosition){
+      valid = false;
+        alert('КО-борьба');
+    }
 
 
     if (valid && currentColor === yourColor) {
+      steps.push(stonePosition);
       setStonePosition(stonePosition)
       //setCoordinates({ ...coordinates, [stonePosition]: currentColor });
       setCurrentColor(currentColor === "white" ? "black" : "white");
@@ -116,6 +130,7 @@ const Board = ({
       setMultipleType(false);
       setMapType(false);
     }
+
   };
 
   const handleMultipleTurn = (stonePosition) => {
