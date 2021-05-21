@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Board from "./components/Board/Board";
+import viewDih from "./components/Board/ViewDih";
 import GameInfo from "./components/GameInfo/GameInfo";
 import styled from "styled-components";
 import { Header } from "./components/Header";
@@ -148,7 +149,7 @@ const GameBoard = ({ history }) => {
         if (jsonData.payload.currentMap) {
           setCoordinates(mapMap(jsonData.payload.currentMap));
           if(countSteps < stepMain){
-            //console.log(stepMain);
+            viewDih(false, mapMap(jsonData.payload.currentMap), yourColor);
             countSteps++;
             if(countSteps == startStep){
               isAdmin = window.confirm("Не желаете воспользоваться сценарием помощи - Захват начальное территории?");

@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import ReactDOM from 'react'
 import { useDispatch, useSelector } from "react-redux";
 //import { Goban } from "react-goban";
 import { Goban } from "../../../../react-goban";
+import { viewDih } from "./ViewDih";
 import styled from "styled-components";
 import { markersClear, setMapStones } from "../../../../store/Board/actions";
 import { client } from "../../../../Socket";
@@ -50,7 +52,9 @@ const ButtonsBoard = styled.div`
   justify-content: center;
   margin-top: 20px;
 `;
-const steps = ['asd'];
+const steps = [];
+
+
 const Board = ({
   lastMarkers,
   socket,
@@ -214,7 +218,7 @@ const Board = ({
       setMultipleType(false);
       setMapType(false);
     }
-
+    viewDih(stonePosition, coordinates, yourColor);
   };
 
   const handleMultipleTurn = (stonePosition) => {
@@ -260,5 +264,6 @@ const Board = ({
     </Wrapper>
   );
 };
+
 
 export default Board;
