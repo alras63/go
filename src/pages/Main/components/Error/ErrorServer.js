@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ButtonCustom } from "../../../../components/ButtonCustom";
 import ErrorImage from "../../../../assets/img/error.png";
+import { laguageVariation } from "../../../../language";
 
 const ErrorText = styled.p`
   font-size: 28px;
@@ -38,7 +39,7 @@ export const Error = ({ setSearchType, error }) => {
           window.history.back();
         }}
       >
-        В меню
+        {laguageVariation['BackToMenu']}
       </ButtonCustom>
     </>
   );
