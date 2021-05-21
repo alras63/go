@@ -40,6 +40,10 @@ export const laguageArt = {
         "ru": "Файл",
         "eng": "File"
     },
+    "Analytics":{
+        "ru": "Аналитика",
+        "eng": "Analytics"
+    },
     "Log":{
         "ru": "Лог",
         "eng": "Log"
@@ -67,6 +71,10 @@ export const laguageArt = {
     "BackToMenu":{
         'ru': 'В меню',
         "eng": 'Back to menu'
+    },
+    'Entertheplayersnickname':{
+        'ru': 'Введите ник или номер игрока',
+        'eng': 'Enter the players nickname or number'
     },
     "SuicideAlert":{
         'ru': 'Совершать самоубийство запрещено',
@@ -152,6 +160,10 @@ export const laguageArt = {
     "GameProgress":{
         'ru': 'Ход игры',
         'eng': 'Game progress'
+    },
+    "Protection":{
+        'ru': 'Защита',
+        'eng': 'Protection'
     },
     "Protection":{
         'ru': 'Защита',

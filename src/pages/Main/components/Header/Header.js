@@ -5,6 +5,7 @@ import AvatarImage from "../../../../assets/img/avatar.png";
 import { MAIN_URL, PROFILE_URL } from "../../../../constants/routes";
 import { ButtonCustom } from "../../../../components/ButtonCustom";
 import { Input } from "../../../../components/InputCustom";
+import { laguageVariation } from "../../../../language";
 
 const Wrapper = styled.div`
   max-width: 1300px;
@@ -134,13 +135,13 @@ export const Header = ({
           width="500px"
           mr={40}
           textAlign="left"
-          placeholder="Введите ник или номер игрока"
+          placeholder={laguageVariation['Entertheplayersnickname']}
         />
         <ButtonCustom width="auto" onClick={() => {
           history.push(MAIN_URL)
           setSearchType("")
         }} padding="0 20px">
-          Меню
+         {laguageVariation['BackToMenu']}
         </ButtonCustom>
       </RightSearch>
     )}

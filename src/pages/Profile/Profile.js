@@ -332,14 +332,14 @@ const Profile = ({ history }) => {
             </Right>
             <ButtonRow>
               <ButtonDownloadFile onClick={()=>dispatch(getSgf(item.game_id))}>
-                Файл
+                {laguageVariation['File']}
               </ButtonDownloadFile>
               <ButtonDownloadFile onClick={()=>dispatch(getFullLog(item.game_id))}>
-                Лог
+              {laguageVariation['Log']}
               </ButtonDownloadFile>
               <br />
               <ButtonDownloadFile>
-                Аналитика
+              {laguageVariation['Analytics']}
               </ButtonDownloadFile>
             </ButtonRow>
           </GameHistoryItem>
