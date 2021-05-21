@@ -29,7 +29,7 @@ export const Error = ({ setSearchType, error }) => {
       <Content>
         <Info>
           <ErrorImg alt="error" src={ErrorImage} />
-          <ErrorText>{error}</ErrorText>
+          <ErrorText>{laguageVariation['Error']}</ErrorText>
         </Info>
       </Content>
       <ButtonCustom
