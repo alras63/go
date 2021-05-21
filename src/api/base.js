@@ -12,6 +12,7 @@ const fetchWithTimeout = (...args) => {
     }, TIMEOUT);
     try {
       const res = await fetch(...args);
+    
       resolve(res);
     } finally {
       clearTimeout(t);
@@ -52,7 +53,7 @@ const BaseAPI = (method, { url, body, token }, mockResponse) => {
     params.body = JSON.stringify(body)
   }
 
-  logger.info(`${method}: `, uri, params);
+  // logger.info(`${method}: `, uri, params);
 
   if (mockResponse) {
     return new Promise((resolve) => resolve(mockResponse))
@@ -61,6 +62,7 @@ const BaseAPI = (method, { url, body, token }, mockResponse) => {
   return fetchWithTimeout(uri, params)
       .catch(throwConnectionError)
       .then(async response => {
+  
         await validateResponse(response);
         return response;
       })
@@ -68,8 +70,22 @@ const BaseAPI = (method, { url, body, token }, mockResponse) => {
         if (response.status === 401) {
           return { code: response.status, message: response.statusText }
         }
+       
+       
+
+        
 
         return response.json()
+      }).then(response => {
+        
+        if(response.error=="Пользователь с таким email уже зарегистрирован") {
+          
+          if(document.getElementById('errorWrapper') !== null) {
+            document.getElementById('errorWrapper').style.display="flex";
+            document.getElementById('errorText').textContent=response.error;
+          }
+          
+        }
       });
 }
 

@@ -8,7 +8,7 @@ import { regSubmit, loginSubmit } from "../../../store/Auth/actions";
 
 import { EDUCATION_LOGIN, HINTS_LOGIN } from "../../../constants/routes";
 
-
+import { Error } from "./Error/ErrorServer";
 const Wrapper = styled.div`
   min-height: 100vh;
   position: relative;
@@ -128,6 +128,27 @@ const Label = styled.label`
   font-size: 24px;
   margin-top: 20px;
 `;
+
+const ErrorWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  display: none;
+`;
+
+const ErrorBG = styled.div`
+  background: #fff;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 const Auth = ({history, location}) => {
   const [searchType, setSearchType] = useState(location.state?.from ? location.state.from : '');
   const [activeTab, setActiveTab] = useState("reg");
@@ -178,7 +199,7 @@ const Auth = ({history, location}) => {
                 history.push(EDUCATION_LOGIN);
                 setSearchType("");
               }}>Обучение</ButtonCustomAndArrow>
-            <ButtonCustomAndArrow >Интересные партии</ButtonCustomAndArrow>
+          
           </ContantMain>
           <Container>
         <Left>
@@ -279,7 +300,13 @@ const Auth = ({history, location}) => {
        
         
       </ContainerOne>
-      
+      <ErrorWrapper  id="errorWrapper">
+        <ErrorBG>
+        <Error
+            error="Не удалось подключиться к серверу"
+          />
+        </ErrorBG>
+      </ErrorWrapper>
     </Wrapper>
   );
 };
