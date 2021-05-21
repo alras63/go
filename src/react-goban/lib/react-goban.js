@@ -399,16 +399,17 @@ var Goban = createReactClass({
           size: this.props.size,
           coordSystem: this.props.coordSystem,
         }),
-        React.createElement(CompositeStonesLayer, {
-          size: this.props.size,
-          set: this.props.stones,
-          nextToPlay: this.props.nextToPlay,
-          onIntersectionClick: this.props.onIntersectionClick,
-        }),
+        
         React.createElement(MarkersLayer, {
           size: this.props.size,
           markers: this.props.markers,
           positions: this.props.stones,
+          onIntersectionClick: this.props.onIntersectionClick,
+        }),
+        React.createElement(CompositeStonesLayer, {
+          size: this.props.size,
+          set: this.props.stones,
+          nextToPlay: this.props.nextToPlay,
           onIntersectionClick: this.props.onIntersectionClick,
         }),
         React.createElement(LastMarkersLayer, { size: this.props.size, lastMarkers: this.props.lastMarkers, positions: this.props.stones }),
