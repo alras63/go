@@ -95,3 +95,12 @@ button.button.ru{
   align-items:center;
   height:90vh;
 }
+
+
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
