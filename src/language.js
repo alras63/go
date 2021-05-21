@@ -165,14 +165,98 @@ export const laguageArt = {
         'ru': 'Защита',
         'eng': 'Protection'
     },
-    "Protection":{
-        'ru': 'Защита',
-        'eng': 'Protection'
+    "SignIn":{
+        'ru': 'Войти',
+        'eng': 'Sign in'
     },
-    "Protection":{
-        'ru': 'Защита',
-        'eng': 'Protection'
+    "AlreadyRegistered":{
+        'ru': 'Уже зарегистрированы?',
+        'eng': 'Already registered?'
     },
+    "Register":{
+        'ru': 'Зарегистрироваться',
+        'eng': 'Register'
+    },
+    "EffectiveGuidance":{
+        'ru': 'Эффективная система подсказок в игре Го',
+        'eng': 'Effective guidance system in the game of Go'
+    },
+    "Cancel":{
+        'ru': 'Отмена',
+        'eng': 'Cancel'
+    },
+    "Victory":{
+        'ru': 'Победа!',
+        'eng': 'Victory!'
+    },
+    "Defeat":{
+        'ru': 'Поражение!',
+        'eng': 'Defeat!'
+    },
+    "PlayAgain":{
+        'ru': 'Играть еще',
+        'eng': 'PlayAgain'
+    },
+    "Score":{
+        'ru': 'Счет',
+        'eng': 'Score'
+    },
+    "PointsHints":{
+        'ru': 'Очки по подсказкам',
+        'eng': 'Points based on hints'
+    },
+    "TotalPoints":{
+        'ru': 'Итоговые очки',
+        'eng': 'TotalPoints'
+    },
+    "WaitingRandomOpponent":{
+        'ru': 'Ожидание случайного соперника',
+        'eng': 'Waiting for a random opponent'
+    },
+    "WaitingSecondPlayer":{
+        'ru': 'Ожидание второго игрока',
+        'eng': 'Waiting for the second player'
+    },
+    "EnemyFound":{
+        'ru': 'Противник найден!',
+        'eng': 'Enemy found!'
+    },
+    "ThePlayerConnected":{
+        'ru': 'Игрок подключился!',
+        'eng': "The player is connected!"
+    },
+    "ErrorConnect":{
+        'ru': 'Не удалось подключиться к запрашиваемой игре',
+        'eng': "Couldnt connect to the requested game!"
+    },
+    "ClosedGame":{
+        'ru': '«Закрытая игра»',
+        'eng': '«Closed game»'
+    },
+    "CreateGame":{
+        'ru': 'Создать игру',
+        'eng': 'Create a game'
+    },
+    "Join":{
+        'ru': 'Присоединиться к игре',
+        'eng': 'Join the game'
+    },
+    'YourGameCode':{
+        'ru': 'Код вашей игры',
+        'eng': 'Your game Code'
+    },
+    'StartTheGame':{
+        'ru': 'Начать игру',
+        'eng': 'Start the game'
+    },
+    'EntertheGameCode':{
+        'ru': 'Укажите код игры',
+        'eng': 'Enter the game code'
+    },
+    'Waiting':{
+        'ru': 'Ожидайте',
+        'eng': 'Waiting'
+    }
 };
 
 export const laguageVariation = {};

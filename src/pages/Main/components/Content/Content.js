@@ -159,7 +159,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
         <LoadingGame
           gameId={gameId}
           setSearchType={setSearchType}
-          text="Ожидание случайного соперника"
+          text={laguageVariation['WaitingRandomOpponent']}
           setOpponent={setOpponent}
           searchType={searchType}
         />
@@ -172,7 +172,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           setSearchType={setSearchType}
           setOpponent={setOpponent}
           code={code}
-          text="Ожидание второго игрока"
+          text={laguageVariation['WaitingSecondPlayer']}
           searchType={searchType}
         />
       );
@@ -183,7 +183,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           history={history}
           opponent={opponent}
           setSearchType={setSearchType}
-          text="Противник найден!"
+          text={laguageVariation["EnemyFound"]}
         />
       );
 
@@ -193,7 +193,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           history={history}
           opponent={opponent}
           setSearchType={setSearchType}
-          text="Игрок подключился!"
+          text={laguageVariation['ThePlayerConnected']}
         />
       );
 
@@ -203,7 +203,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
     case "Error":
       return (
         <Error
-          error="Не удалось подключиться к запрашиваемой игре"
+          error={laguageVariation['ErrorConnect']}
           setSearchType={setSearchType}
         />
       );

@@ -9,6 +9,7 @@ import { client, token } from '../../../../Socket.js'
 import { clearGameId } from "../../../../store/GameCreate/actions";
 import { Input } from "../../../../components/InputCustom";
 import send from './../../../../api/Send';
+import { laguageVariation } from "../../../../language";
 
 const Text = styled.p`
   font-size: 28px;
@@ -76,7 +77,7 @@ export const LoadingGame = ({ text, setSearchType, setOpponent, searchType, game
       {codeBlock()}
     
       <ButtonCustom onClick={() => { document.getElementById('overflow-wrapper').style.display = "none"; cancelGame()}}>
-        Отмена
+        {laguageVariation['Cancel']}
       </ButtonCustom>
     </>
   );

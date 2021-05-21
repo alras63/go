@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ButtonCustom } from "../../../../components/ButtonCustom";
 import { useSelector } from "react-redux";
+import { laguageVariation } from "../../../../language";
 
 const Text = styled.p`
   font-size: 28px;
@@ -108,10 +109,10 @@ export const Winner = ({setSearchType}) => {
           </ScoreWrapper>
         </Info>
       </Enemy>
-      <Text>{winner?.id === userId ? 'Победил!' : 'Проиграл!'}</Text>
-      <ScoreText>Счет: <ScoreAfter>{player?.finalScore}</ScoreAfter>{/*/ <ScoreBefore>10</ScoreBefore>*/}</ScoreText>
-      <ScoreText>Очки по подсказкам: <ScoreAfter>{player?.hintScore}</ScoreAfter></ScoreText>
-      <ScoreText>Итоговые очки: <ScoreAfter>{player?.rpScore}</ScoreAfter></ScoreText>
+      <Text>{winner?.id === userId ? laguageVariation['Victory'] : laguageVariation["Defeat"]}</Text>
+      <ScoreText>{laguageVariation['Score']}: <ScoreAfter>{player?.finalScore}</ScoreAfter>{/*/ <ScoreBefore>10</ScoreBefore>*/}</ScoreText>
+      <ScoreText>{laguageVariation['PointsHints']}: <ScoreAfter>{player?.hintScore}</ScoreAfter></ScoreText>
+      <ScoreText>{laguageVariation['TotalPoints']}: <ScoreAfter>{player?.rpScore}</ScoreAfter></ScoreText>
       <ButtonCustom
         width="327px"
         mt={30}
@@ -120,9 +121,9 @@ export const Winner = ({setSearchType}) => {
           setSearchType("");
         }}
       >
-        В меню
+        {laguageVariation['BackToMenu']}
       </ButtonCustom>
-      <ButtonCustom width="327px" onClick={()=>setSearchType("")}>Играть еще</ButtonCustom>
+      <ButtonCustom width="327px" onClick={()=>setSearchType("")}>{laguageVariation['PlayAgain']}</ButtonCustom>
     </>
   );
 };

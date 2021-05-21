@@ -153,6 +153,11 @@ const ErrorBG = styled.div`
   align-items: center;
   flex-direction: column;
 `;
+
+const SubTitle = styled.p`
+max-width:400px;
+`;
+
 const Auth = ({history, location}) => {
   const [searchType, setSearchType] = useState(location.state?.from ? location.state.from : '');
   const [activeTab, setActiveTab] = useState("reg");
@@ -194,7 +199,7 @@ const Auth = ({history, location}) => {
 
           <Buttonslang history={history}/>
         </Top>
-            Эффективная система <br/>подсказок в игре Го
+            <SubTitle>{laguageVariation['EffectiveGuidance']}</SubTitle>
           </Titlemain>
           <ContantMain>
             <ButtonCustomAndArrow  onClick={() => {
@@ -257,11 +262,11 @@ const Auth = ({history, location}) => {
           <ButtonCustomForm type="submit" mb={30}>
           {activeTab === "reg" ? (
             <Span>
-              Зарегистрироваться
+              {laguageVariation['Register']}
             </Span>
           ) : (
             <Span>
-              Войти
+              {laguageVariation['SignIn']}
             </Span>
           )}
 
@@ -269,7 +274,7 @@ const Auth = ({history, location}) => {
           <Tabs>
           {activeTab === "reg" ? (
             <Span>
-              Уже зарегистрированы?
+              {laguageVariation['AlreadyRegistered']}
             </Span>
           ) : (
             <Span>
@@ -282,14 +287,14 @@ const Auth = ({history, location}) => {
             onClick={() => setActiveTab("auth")}
             active={activeTab !== "auth"}
           >
-            Войти
+            {laguageVariation['SignIn']}
           </Tab>
           ) : (
             <Tab
               onClick={() => setActiveTab("reg")}
               active={activeTab !== "reg"}
             >
-              Зарегистрироваться
+              {laguageVariation['Register']}
             </Tab>
           )}
 

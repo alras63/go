@@ -6,6 +6,7 @@ import { Input } from "../../../../components/InputCustom";
 import { clearGameId, createGameCode, joinGameWithCode } from "../../../../store/GameCreate/actions";
 import { client, token } from "../../../../Socket";
 import send from './../../../../api/Send';
+import { laguageVariation } from "../../../../language";
 
 const Text = styled.p`
   font-size: 28px;
@@ -15,40 +16,40 @@ const Text = styled.p`
 
 const CustomCodeContent = ({ setSearchType, setContentType }) => (
   <>
-    <Text>«Закрытая игра»</Text>
+    <Text>{laguageVariation['ClosedGame']}</Text>
     <ButtonCustom mt={40} mb={30} onClick={() => setContentType("CreateGame")}>
-      Создать игру
+      {laguageVariation['CreateGame']}
     </ButtonCustom>
     <ButtonCustom mb={30} onClick={() => setContentType("JoinGame")}>
-      Присоединиться
+      {laguageVariation['Join']}
     </ButtonCustom>
-    <ButtonCustom onClick={() => setSearchType("")}>Отмена</ButtonCustom>
+    <ButtonCustom onClick={() => setSearchType("")}>{laguageVariation['Cancel']}</ButtonCustom>
   </>
 );
 
 const CreateGame = ({ setSearchType, cancelGame, code }) => (
   <>
-    <Text>Код вашей игры:</Text>
-    <Input value={code || 'Ожидайте'} textAlign="center" disabled mt={40} mb={30} color={"#000"} />
+    <Text>{laguageVariation['YourGameCode']}:</Text>
+    <Input value={code || laguageVariation['Waiting']} textAlign="center" disabled mt={40} mb={30} color={"#000"} />
     <ButtonCustom mb={30} onClick={() => setSearchType("CodeEnter")}>
-      Начать игру
+      {laguageVariation['StartTheGame']}
     </ButtonCustom>
-    <ButtonCustom onClick={() => cancelGame()}>Отмена</ButtonCustom>
+    <ButtonCustom onClick={() => cancelGame()}>{laguageVariation['Cancel']}</ButtonCustom>
   </>
 );
 
 const JoinGame = ({ setSearchType, cancelGame, code, setCode }) => (
   <>
-    <Text>Укажите код игры:</Text>
+    <Text>{laguageVariation['EntertheGameCode']}:</Text>
     <Input mt={30} mb={30} onChange={setCode} name="code"   color={"#000"} border={"1px solid #000"} />
     <ButtonCustom
       mb={30}
       disabled={!code}
       onClick={() => code && setSearchType("CodeEnter")}
     >
-      Присоединиться
+      {laguageVariation['Join']}
     </ButtonCustom>
-    <ButtonCustom onClick={() => cancelGame()}>Отмена</ButtonCustom>
+    <ButtonCustom onClick={() => cancelGame()}>{laguageVariation['Cancel']}</ButtonCustom>
   </>
 );
 
