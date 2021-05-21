@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ButtonCustomAndArrow, ButtonCustomForm } from "../../../../components/ButtonCustom";
 import Logo from "../../../../assets/img/logo.png";
 import Grafik from '../../../../assets/img/grafik.png'
+import bg from "../../../../assets/img/bg.jpg";
 
 const Wrapper = styled.div`
   // width: 613px;
@@ -43,7 +44,8 @@ const ContainerOne = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px 0px;
-  
+  background-image: url(${bg});
+  background-blend-mode: multiply;
 `;
 
 const Form = styled.form`

@@ -86,6 +86,8 @@ const BaseAPI = (method, { url, body, token }, mockResponse) => {
           }
           
         }
+
+        return response;
       });
 }
 

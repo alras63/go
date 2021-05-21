@@ -9,7 +9,7 @@ import { regSubmit, loginSubmit } from "../../../store/Auth/actions";
 import { EDUCATION_LOGIN, HINTS_LOGIN } from "../../../constants/routes";
 
 import {Buttonslang, laguageVariation} from '../../../language';
-
+import bg from "../../../assets/img/bg.jpg";
 import { Error } from "./Error/ErrorServer";
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -17,6 +17,8 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   background-color: #786354;
+  background-image: url(${bg});
+  background-blend-mode: multiply;
 `;
 
 const Container = styled.div`

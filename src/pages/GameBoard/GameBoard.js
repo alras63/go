@@ -38,6 +38,7 @@ import {
   HEATMAP_ZONE_QUARTER,
   HEATMAP_ZONE_QUARTER_ONE,
 } from "./components/Help/types";
+import bg from "../../assets/img/bg.jpg";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -69,6 +70,8 @@ const Container = styled.div`
 
 const ContainerOne = styled.div`
   background-color: #786354;
+  background-image: url(${bg});
+  background-blend-mode: multiply;
   width: 100%;
   // margin: 0 auto;
   height: 100vh;

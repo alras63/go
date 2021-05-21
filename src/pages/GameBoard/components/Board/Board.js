@@ -9,7 +9,7 @@ import { markersClear, setMapStones } from "../../../../store/Board/actions";
 import { client } from "../../../../Socket";
 import send from './../../../../api/Send';
 import { laguageVariation } from "../../../../language";
-
+import bg from "../../../../assets/img/bg.jpg";
 const Text = styled.p`
   font-size: 24px;
   line-height: 28px;
@@ -30,6 +30,8 @@ flex-direction: column;
   display: flex;
 align-items: center;
 justify-content: center;
+background-image: url(${bg});
+background-blend-mode: multiply;
 background-color: #786354;
   & > div {
     top: 0;

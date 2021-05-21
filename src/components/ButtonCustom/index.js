@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import bg from "../../assets/img/bg.jpg";
 const Btn = styled.button`
   width: ${(props) => (props.width ? props.width : "100%")};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 400)};

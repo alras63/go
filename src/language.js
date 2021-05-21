@@ -200,7 +200,7 @@ const Button = styled.button`
 
 
 export const Buttonslang = ({ history }) => {
-    return ( <Wrapper style={{marginBottom: 50}}>
+    return ( <Wrapper>
         <Button className="button ru is-large has-text-white" onClick = {
             function() {
                 localStorage.setItem('language', 'ru');

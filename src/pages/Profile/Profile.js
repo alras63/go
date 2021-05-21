@@ -7,6 +7,7 @@ import { Input, InputProfile } from "../../components/InputCustom";
 import { MAIN_URL } from "../../constants/routes";
 import { laguageVariation } from "../../language";
 import { getProfile, getSgf, getFullLog } from "../../store/Profile/actions";
+import bg from "../../assets/img/bg.jpg";
 
 const Wrapper = styled.div`
 height: 100vh;
@@ -37,6 +38,8 @@ const ContainerOne = styled.div`
 
 const Container = styled.div`
 background-color: #786354;
+background-image: url(${bg});
+background-blend-mode: multiply;
 width: 50%;
 margin: 0 auto;
 min-height: 100%;
