@@ -114,7 +114,6 @@ export const Liders = ({ history }) => {
       setList(liders)
     }
   }, [nickname, liders])
-
   return (
     <Wrapper>
       <Header

@@ -17,5 +17,6 @@ export const getFullLog = (id) => {
 };
 
 export const getLiders = (token) => {
-  return GET(`leaderboard?token=${token}`, {}, token);
+  return GET(`leader-board`, {}, token);
+  //return GET(`leaderboard?token=${token}`, {}, token);
 };

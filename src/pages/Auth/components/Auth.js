@@ -7,7 +7,7 @@ import { Input } from "../../../components/InputCustom";
 import { regSubmit, loginSubmit } from "../../../store/Auth/actions";
 
 import { EDUCATION_LOGIN, HINTS_LOGIN } from "../../../constants/routes";
-
+import {Buttonslang, laguageVariation} from '../../../language';
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -165,7 +165,9 @@ const Auth = ({history, location}) => {
           <Titlemain>
           <Top>
           <Logotype alt="logo" src={Logo} />
-          ГоСтратег
+          {laguageVariation["GoStrategist"]}
+
+          <Buttonslang history={history}/>
         </Top>
             Эффективная система <br/>подсказок в игре Го
           </Titlemain>
@@ -173,12 +175,11 @@ const Auth = ({history, location}) => {
             <ButtonCustomAndArrow  onClick={() => {
                 history.push(HINTS_LOGIN);
                 setSearchType("");
-              }}>Подсказки</ButtonCustomAndArrow>
+              }}>{laguageVariation["Hints"]}</ButtonCustomAndArrow>
             <ButtonCustomAndArrow onClick={() => {
                 history.push(EDUCATION_LOGIN);
                 setSearchType("");
-              }}>Обучение</ButtonCustomAndArrow>
-            <ButtonCustomAndArrow >Интересные партии</ButtonCustomAndArrow>
+              }}>{laguageVariation["learning"]}</ButtonCustomAndArrow>
           </ContantMain>
           <Container>
         <Left>
