@@ -45,6 +45,7 @@ function* fetchGetProfileById_saga(action) {
 function* fetchGetLidersBoard_saga() {
   try {
     const res = yield call(getLiders, getToken());
+    console.log(res);
     yield put({type: SET_LIDERS, payload: res})
   } catch (e) {
     // throw e;
