@@ -256,6 +256,14 @@ export const laguageArt = {
     'Waiting':{
         'ru': 'Ожидайте',
         'eng': 'Waiting'
+    },
+    'TryAgain':{
+        'ru': 'Попробовать еще раз',
+        'eng': 'Try again'
+    },
+    'Error':{
+        'ru': 'Ошибка',
+        'eng': 'Error'
     }
 };
 

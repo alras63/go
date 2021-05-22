@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ButtonCustom } from "../../../../components/ButtonCustom";
 import ErrorImage from "../../../../assets/img/error.png";
+import { laguageVariation } from "../../../../language";
 
 const ErrorText = styled.p`
   font-size: 28px;
@@ -38,9 +39,9 @@ export const Error = ({ setSearchType, error }) => {
           setSearchType("");
         }}
       >
-        В меню
+        {laguageVariation['BackToMenu']}
       </ButtonCustom>
-      <ButtonCustom width="327px">Попробовать еще раз</ButtonCustom>
+      <ButtonCustom width="327px">{laguageVariation['TryAgain']}</ButtonCustom>
     </>
   );
 };
