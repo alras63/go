@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Header } from "../Main/components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { getLiders } from "../../store/Profile/actions";
+import {isMobile} from 'react-device-detect';
 
 const Wrapper = styled.div`
   max-width: 1300px;
@@ -12,22 +13,24 @@ const Wrapper = styled.div`
   display: flex;
   align-items: flex-start;
   padding-top: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow-x: hidden;
 `;
 
 const LidersCont = styled.div`
-  width: 100%;
-  max-height: 590px;
-  overflow-y: scroll;
+  width: 90%;
+  max-height: ${props => !isMobile ? '590px' : '100%'};
+  overflow-y: ${props => !isMobile ? 'scroll' : 'initial'};;
   display: flex;
   flex-wrap: wrap;
 `;
 
 const Lider = styled.div`
-  width: 50%;
-  display: flex;
+  width: ${props => !isMobile ? '50%' : '100%'};
+  display: ${props => !isMobile ? 'flex' : 'block'};
   margin-bottom: 30px;
   align-items: center;
-  padding: 0 20px;
 `;
 
 const LiderImg = styled.img`
@@ -36,7 +39,7 @@ const LiderImg = styled.img`
   border-radius: 50%;
 `;
 const Name = styled.div`
-  width: 50%;
+  width:50%;
   position: relative;
   display: flex;
   align-items: center;

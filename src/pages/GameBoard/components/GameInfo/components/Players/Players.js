@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Avatar1 from "../../../../../../assets/img/avatar.png";
 import Avatar2 from "../../../../../../assets/img/avatar-2.png";
 import { useSelector, useStore } from "react-redux";
+import { isMobile } from "react-device-detect";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,26 +15,28 @@ const Player = styled.div`
   background: ${(props) => (props.active ? "#EDEDED" : "#F9F9F9")};
   border: ${(props) => (props.winner ? "4px solid green" : "0px")};
   position: relative;
+  flex-direction: ${(props) => (!isMobile ? "" : "column")};
+  
 `;
 const PlayerRight = styled(Player)`
   justify-content: flex-end;
 `;
 const Avatar = styled.img`
   border-radius: 100px;
-  width: 95px;
+  width: ${(props) => (!isMobile ? "95px" : "55px")};
   margin-right: 15px;
   border: 6px solid #000;
 `;
 const AvatarRight = styled.img`
   border-radius: 100px;
-  width: 95px;
+  width: ${(props) => (!isMobile ? "95px" : "55px")};
   margin-left: 15px;
   border: 6px solid #FFF;
 `;
 const Info = styled.div``;
 const Name = styled.p`
   color: #5b5b5b;
-  font-size: 24px;
+  font-size: ${(props) => (!isMobile ? "24px" : "18px")};
 `;
 const Pts = styled.p`
   color: #5b5b5b;
@@ -101,14 +104,14 @@ const Time = styled.div`
   color: #aaaaaa;
   font-size: 18px;
   position: absolute;
-  bottom: 10px;
+  bottom:${(props) => (!isMobile ? "10px" : "0")};
   right: 50px;
 `;
 const TimeRight = styled.p`
   color: #aaaaaa;
   font-size: 18px;
   position: absolute;
-  bottom: 10px;
+  bottom: ${(props) => (!isMobile ? "10px" : "0")};
   left: 50px;
 `;
 

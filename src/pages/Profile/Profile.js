@@ -26,7 +26,7 @@ const ContainerOne = styled.div`
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    padding: 120px 0px;
+    padding: 120px 20px;
     min-height: 100vh;
     overflow-y: scroll;
 
@@ -46,7 +46,7 @@ min-height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 120px 0px;
+padding: 120px 20px;
 @media (max-width: 908px) {
   width: 100%;
   overflow-y: initial;
@@ -333,7 +333,7 @@ const Profile = ({ history }) => {
               <ScoreLeft>{item.scoreOpponent}</ScoreLeft>
               <ScoreRight>{item.score}</ScoreRight>
             </Right>
-            <ButtonRow>
+            {/* <ButtonRow>
               <ButtonDownloadFile onClick={()=>dispatch(getSgf(item.game_id))}>
                 {laguageVariation['File']}
               </ButtonDownloadFile>
@@ -344,7 +344,7 @@ const Profile = ({ history }) => {
               <ButtonDownloadFile>
               {laguageVariation['Analytics']}
               </ButtonDownloadFile>
-            </ButtonRow>
+            </ButtonRow> */}
           </GameHistoryItem>
       )
     });

@@ -8,14 +8,20 @@ import { Winner } from "../Winner";
 import { Error } from "../Error";
 import { INFO_URL, PROFILE_URL } from "../../../../constants/routes";
 
-import {Buttonslang, laguageVariation} from '../../../../language';
+import { Buttonslang, laguageVariation } from "../../../../language";
 
 import { EDUCATION, HINTS } from "../../../../constants/routes";
-import { createRandomGame, createGameWithAi } from "../../../../store/GameCreate/actions";
+import {
+  createRandomGame,
+  createGameWithAi,
+} from "../../../../store/GameCreate/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { ButtonCustomAndArrow, ButtonCustomForm } from "../../../../components/ButtonCustom";
+import {
+  ButtonCustomAndArrow,
+  ButtonCustomForm,
+} from "../../../../components/ButtonCustom";
 import Logo from "../../../../assets/img/logo.png";
-import Grafik from '../../../../assets/img/grafik.png'
+import Grafik from "../../../../assets/img/grafik.png";
 import bg from "../../../../assets/img/bg.jpg";
 
 const Wrapper = styled.div`
@@ -111,21 +117,19 @@ const Titlemain = styled.h1`
   font-size: 28px;
   margin-bottom: 0px;
   flex: 0 0 auto;
-
 `;
 
 const ContantMain = styled.div`
-flex: 1 0 auto;
+  flex: 1 0 auto;
 `;
 
 const FooterMain = styled.div`
-font-size: 18px;
-font-weight: bold;
+  font-size: 18px;
+  font-weight: bold;
 
-color: #000;
-flex: 0 0 auto;
+  color: #000;
+  flex: 0 0 auto;
 `;
-
 
 const FixedBlock = styled.div`
   position: fixed;
@@ -135,31 +139,29 @@ const FixedBlock = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.5)
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 const FixedBlockContainer = styled.div`
   max-width: 70%;
   background: #fff;
   padding: 30px;
-
-`
+`;
 
 const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
-  const [opponent, setOpponent] = useState({})
-  const [code, setCode] = useState('')
-  
+  const [opponent, setOpponent] = useState({});
+  const [code, setCode] = useState("");
+
   switch (searchType) {
     case "Code":
       return <CodeContent gameId={gameId} setSearchType={setSearchType} />;
 
     case "Random":
       return (
-        
         <LoadingGame
           gameId={gameId}
           setSearchType={setSearchType}
-          text={laguageVariation['WaitingRandomOpponent']}
+          text={laguageVariation["WaitingRandomOpponent"]}
           setOpponent={setOpponent}
           searchType={searchType}
         />
@@ -172,7 +174,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           setSearchType={setSearchType}
           setOpponent={setOpponent}
           code={code}
-          text={laguageVariation['WaitingSecondPlayer']}
+          text={laguageVariation["WaitingSecondPlayer"]}
           searchType={searchType}
         />
       );
@@ -193,7 +195,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           history={history}
           opponent={opponent}
           setSearchType={setSearchType}
-          text={laguageVariation['ThePlayerConnected']}
+          text={laguageVariation["ThePlayerConnected"]}
         />
       );
 
@@ -203,7 +205,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
     case "Error":
       return (
         <Error
-          error={laguageVariation['ErrorConnect']}
+          error={laguageVariation["ErrorConnect"]}
           setSearchType={setSearchType}
         />
       );
@@ -226,93 +228,147 @@ const PlayerInfo = styled.div`
   flex-direction: row-reverse;
 `;
 
-export const Content = ({ history, searchType, setSearchType,  nickname, pts, avatar, winrate }) => {
+export const Content = ({
+  history,
+  searchType,
+  setSearchType,
+  nickname,
+  pts,
+  avatar,
+  winrate,
+}) => {
   const dispatch = useDispatch();
-  const gameId = useSelector(state => state.createGame.id);
+  const gameId = useSelector((state) => state.createGame.id);
 
   useEffect(async () => {
-    if (searchType === "Random") await dispatch(createRandomGame())
-    if (searchType === "WithAi") await dispatch(createGameWithAi())
-  }, [searchType])
+    if (searchType === "Random") await dispatch(createRandomGame());
+    if (searchType === "WithAi") await dispatch(createGameWithAi());
+  }, [searchType]);
 
   return (
     <Wrapper>
       <ContainerOne>
         <Left>
-          <Buttonslang history={history}/>
+          <Buttonslang history={history} />
           <Titlemain>
             <Top>
               <Logotype alt="logo" src={Logo} />
               {laguageVariation["GoStrategist"]}
-              <PlayerInfo onClick={() => {
-            if (searchType !== "ConnectRandom" && searchType !== "ConnectCode") {
-              history.push(PROFILE_URL);
-              setSearchType("");
-            }
-          }}>
-            <Info>
-              <Name>{nickname || ""}</Name>
-              <ScoreWrapper>
-                <Pts style={{ marginRight: 16 }}>{pts || 0}pts</Pts>
-                <Pts>{winrate || ""}</Pts>
-              </ScoreWrapper>
-            </Info>
-            <Avatar alt="avatar" src={avatar} />
-          </PlayerInfo>
+              <PlayerInfo
+                onClick={() => {
+                  if (
+                    searchType !== "ConnectRandom" &&
+                    searchType !== "ConnectCode"
+                  ) {
+                    history.push(PROFILE_URL);
+                    setSearchType("");
+                  }
+                }}
+              >
+                <Info>
+                  <Name>{nickname || ""}</Name>
+                  <ScoreWrapper>
+                    <Pts style={{ marginRight: 16 }}>{pts || 0}pts</Pts>
+                    <Pts>{winrate || ""}</Pts>
+                  </ScoreWrapper>
+                </Info>
+                <Avatar alt="avatar" src={avatar} />
+              </PlayerInfo>
             </Top>
-            
+
             {/* Эффективная система подсказок в игре Го */}
           </Titlemain>
           <ContantMain>
-            <ButtonCustomAndArrow textColor="#000" mb={0} onClick={() => history.push('/gameBoard')} disabled={gameId === null}>
-              {laguageVariation['continue']}
-          </ButtonCustomAndArrow>
-   
-            <ButtonCustomAndArrow  textColor="#000" mb={0} onClick={() => { document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("Random")}} disabled={gameId !== null}>
-              {laguageVariation['PlayWithARandomOpponent']}
-          </ButtonCustomAndArrow>
-            <ButtonCustomAndArrow mb={0} onClick={() => {document.getElementById('overflow-wrapper').style.display = "flex"; setSearchType("WithAi")}} disabled={gameId !== null}>
-
-              {laguageVariation['gameAI']}
-          </ButtonCustomAndArrow>
-            <ButtonCustomAndArrow onClick={() => {document.getElementById('overflow-wrapper').style.display = "flex";setSearchType("Code")}} mb={0} disabled={gameId !== null}>
-  {laguageVariation['privateGame']}
-          </ButtonCustomAndArrow>
-          <ButtonCustomAndArrow
+            <ButtonCustomAndArrow
+              fontSize="24px"
+              textColor="#000"
+              mb={0}
+              onClick={() => history.push("/gameBoard")}
+              disabled={gameId === null}
+            >
+              {laguageVariation["continue"]}
+            </ButtonCustomAndArrow>
+            <ButtonCustomAndArrow
+              fontSize="24px"
+              textColor="#000"
+              mb={0}
+              onClick={() => {
+                document.getElementById("overflow-wrapper").style.display =
+                  "flex";
+                setSearchType("Random");
+              }}
+              disabled={gameId !== null}
+            >
+              {laguageVariation["PlayWithARandomOpponent"]}
+            </ButtonCustomAndArrow>
+            <ButtonCustomAndArrow
+              fontSize="24px"
+              mb={0}
+              onClick={() => {
+                document.getElementById("overflow-wrapper").style.display =
+                  "flex";
+                setSearchType("WithAi");
+              }}
+              disabled={gameId !== null}
+            >
+              {laguageVariation["gameAI"]}
+            </ButtonCustomAndArrow>
+            <ButtonCustomAndArrow
+              fontSize="24px"
+              onClick={() => {
+                document.getElementById("overflow-wrapper").style.display =
+                  "flex";
+                setSearchType("Code");
+              }}
+              mb={0}
+              disabled={gameId !== null}
+            >
+              {laguageVariation["privateGame"]}
+            </ButtonCustomAndArrow>
+            <ButtonCustomAndArrow
+              fontSize="24px"
               onClick={() => {
                 history.push(EDUCATION);
                 setSearchType("");
               }}
             >
-              {laguageVariation['learning']}
-          </ButtonCustomAndArrow>{" "}
-          <ButtonCustomAndArrow  onClick={() => {
+              {laguageVariation["learning"]}
+            </ButtonCustomAndArrow>{" "}
+            <ButtonCustomAndArrow
+              fontSize="24px"
+              onClick={() => {
                 history.push(HINTS);
                 setSearchType("");
-              }}>{laguageVariation['Hints']}</ButtonCustomAndArrow> {" "}
-            <ButtonCustomAndArrow mb={0} onClick={() => history.push('/liders')}>{laguageVariation['RatingPlayer']}</ButtonCustomAndArrow>{" "}
+              }}
+            >
+              {laguageVariation["Hints"]}
+            </ButtonCustomAndArrow>{" "}
             <ButtonCustomAndArrow
+              fontSize="24px"
+              mb={0}
+              onClick={() => history.push("/liders")}
+            >
+              {laguageVariation["RatingPlayer"]}
+            </ButtonCustomAndArrow>{" "}
+            <ButtonCustomAndArrow
+              fontSize="24px"
               onClick={() => {
                 history.push(INFO_URL);
                 setSearchType("");
               }}
             >
-              {laguageVariation['Information']}
-          </ButtonCustomAndArrow>{" "}
+              {laguageVariation["Information"]}
+            </ButtonCustomAndArrow>{" "}
           </ContantMain>
-          <FooterMain style={{marginTop: 40}}>
-            SGK Team, 2021
-          </FooterMain>
+          <FooterMain style={{ marginTop: 40 }}>SGK Team, 2021</FooterMain>
         </Left>
       </ContainerOne>
-      {!searchType ? (
-        <>
-
-        </>
-      ) : null}
-      <FixedBlock class={searchType === "" ? 'hidden' : searchType} id="overflow-wrapper" >
+      {!searchType ? <></> : null}
+      <FixedBlock
+        class={searchType === "" ? "hidden" : searchType}
+        id="overflow-wrapper"
+      >
         <FixedBlockContainer>
-          
           {ContentMainBoard(setSearchType, searchType, history, gameId)}
         </FixedBlockContainer>
       </FixedBlock>
@@ -320,13 +376,11 @@ export const Content = ({ history, searchType, setSearchType,  nickname, pts, av
   );
 };
 
-
 const Info = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 `;
-
 
 const Name = styled.p`
   font-size: 28px;
@@ -363,32 +417,35 @@ const Search = styled.img`
 
 const Images = styled.img``;
 
-export const ContentOne = ({ history, searchType, setSearchType, nickname, pts, avatar, winrate }) => {
+export const ContentOne = ({
+  history,
+  searchType,
+  setSearchType,
+  nickname,
+  pts,
+  avatar,
+  winrate,
+}) => {
   const dispatch = useDispatch();
-  const gameId = useSelector(state => state.createGame.id);
+  const gameId = useSelector((state) => state.createGame.id);
 
   useEffect(async () => {
-    if (searchType === "Random") await dispatch(createRandomGame())
-    if (searchType === "WithAi") await dispatch(createGameWithAi())
-  }, [searchType])
+    if (searchType === "Random") await dispatch(createRandomGame());
+    if (searchType === "WithAi") await dispatch(createGameWithAi());
+  }, [searchType]);
 
   return (
     <Wrapper>
       <Container>
-        <Right>
-      
-        </Right>
-        
+        <Right></Right>
       </Container>
- 
-      {!searchType ? (
-        <>
 
-        </>
-      ) : null}
-      <FixedBlock class={searchType === "" ? 'hidden' : searchType} id="overflow-wrapper" >
+      {!searchType ? <></> : null}
+      <FixedBlock
+        class={searchType === "" ? "hidden" : searchType}
+        id="overflow-wrapper"
+      >
         <FixedBlockContainer>
-          
           {ContentMainBoard(setSearchType, searchType, history, gameId)}
         </FixedBlockContainer>
       </FixedBlock>

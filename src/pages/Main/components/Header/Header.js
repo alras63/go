@@ -6,16 +6,18 @@ import { MAIN_URL, PROFILE_URL } from "../../../../constants/routes";
 import { ButtonCustom } from "../../../../components/ButtonCustom";
 import { Input } from "../../../../components/InputCustom";
 import { laguageVariation } from "../../../../language";
-
+import {isMobile} from 'react-device-detect';
 const Wrapper = styled.div`
   max-width: 1300px;
   margin: 0 auto;
   padding-top: 35px;
-  display: flex;
+  display: ${props => !isMobile ? 'flex' : 'block'};
   justify-content: flex-start;
   position: absolute;
-  width: 100%;
+  width:  ${props => !props.profile ? '100%' : '90%'};
   top: 0;
+
+  
 `;
 
 const Left = styled.div`
@@ -40,7 +42,7 @@ const RightContent = styled.div`
 `;
 
 const RightSearch = styled.div`
-  display: flex;
+  display: ${props => !isMobile ? 'flex' : 'block'};
   align-items: center;
   justify-content: flex-end;
   flex-wrap: no-wrap;
@@ -99,7 +101,7 @@ export const Header = ({
   profile,
   setNicknameFunc
 }) => (
-  <Wrapper>
+  <Wrapper profile={profile? true : false}>
     <Left
       onClick={() => {
         if (searchType !== "ConnectRandom" && searchType !== "ConnectCode") {
@@ -132,8 +134,10 @@ export const Header = ({
       <RightSearch>
         <Input
           onChange={(e) => setNicknameFunc(e)}
-          width="500px"
+          width="100%"
           mr={40}
+          fontSize={24}
+          color="#000"
           textAlign="left"
           placeholder={laguageVariation['Entertheplayersnickname']}
         />

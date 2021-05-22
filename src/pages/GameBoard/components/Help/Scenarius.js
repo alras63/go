@@ -8,10 +8,11 @@ import {
   HEATMAP_ZONE_QUARTER_ONE,
 } from "./types";
 import { laguageVariation } from "../../../../language";
+import { isMobile } from "react-device-detect";
 
 const Wrapper = styled.div`
   width: 90%;
-  margin-left: 25px;
+  margin-left: ${(props) => (!isMobile ? "25px" : "0")};
 `;
 
 const HelpWrapper = styled.div`

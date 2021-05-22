@@ -10,6 +10,8 @@ import { client } from "../../../../Socket";
 import send from './../../../../api/Send';
 import { laguageVariation } from "../../../../language";
 import bg from "../../../../assets/img/bg.jpg";
+import {isMobile} from 'react-device-detect';
+
 const Text = styled.p`
   font-size: 24px;
   line-height: 28px;
@@ -23,7 +25,7 @@ const Text = styled.p`
 `;
 
 const Wrapper = styled.div`
-  width: 50%;
+  width:  ${props => !isMobile ? '50%' : '100%'};
   display: flex;
 flex-direction: column;
   position: relative;
@@ -39,7 +41,7 @@ background-color: #786354;
     left: 0;
   }
   &>.react-goban{
-    width: 65%;
+    width:  ${props => !isMobile ? '65%' : '100%'};
     background-color: #b4916c;
   }
   & svg {

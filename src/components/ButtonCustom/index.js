@@ -27,8 +27,8 @@ const Btn = styled.button`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "28px")};
   border: none;
   position: ${(props) => (props.position ? 'fixed' : '')};
-  right: 0px;
-top: 40px;
+  right:  ${(props) => (props.right ? props.right : '0px')};
+  top: ${(props) => (props.top ? props.top : '40px')};
   &:hover {
     background-color: ${(props) => (props.disabled ? "#DEDEDE" : "#FFC266")};
   }
@@ -51,7 +51,9 @@ export const ButtonCustom = ({
   disabled,
   type,
   onClick,
-  position
+  position,
+  right,
+  top
 }) => (
   <Btn
     width={width}
@@ -70,6 +72,8 @@ export const ButtonCustom = ({
     type={type}
     onClick={onClick}
     position={position}
+    right={right}
+    top={top}
   >
     {children}
   </Btn>

@@ -5,7 +5,7 @@ export const laguageArt = {
         "eng": "GO Strategist"
     },
     "privateGame": {
-        "ru": "Закрытая игры",
+        "ru": "Закрытая игра",
         "eng": "Private Game",
     },
     "gameAI": {

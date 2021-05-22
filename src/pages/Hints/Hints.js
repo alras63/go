@@ -33,6 +33,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   padding-top: 200px;
   flex-direction: column;
+  padding: 25px;
 `;
 
 const H1 = styled.h1``;
