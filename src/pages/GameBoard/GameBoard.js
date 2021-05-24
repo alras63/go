@@ -302,7 +302,13 @@ const GameBoard = ({ history }) => {
       ])
     );
   };
-
+  const logsHint = (e) => {
+    setTurns((turns) => [
+      ...turns,
+      'Вы использовали подсказку/сценарий "' + e.target.innerText + '"',
+    ]);
+    console.log(e.target.innerText);
+  }
   const handleHelp = ({ type, multipleHandleCount, id, count }) => {
     dispatch(markersClear());
     setMultipleHint({});
@@ -497,6 +503,7 @@ const GameBoard = ({ history }) => {
               activeHelpId={activeHelpId}
               times={times}
               scores={stepColor !== yourColor ? false : true}
+              logsHint={logsHint}
             />
           ) : (
             <Scenarius
@@ -519,6 +526,7 @@ const GameBoard = ({ history }) => {
               activeHelpId={activeHelpId}
               times={times}
               scores={stepColor !== yourColor ? false : true}
+              logsHint={logsHint}
             />
           )}
         </Flex1>

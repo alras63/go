@@ -48,7 +48,8 @@ const Help = ({
     times,
     hint,
     setHint,
-    setResign
+    setResign,
+    logsHint
   }) => {
   return (
     <Wrapper>
@@ -66,8 +67,8 @@ const Help = ({
       <HelpWrapper>
       <HelpItem
           active={activeHelpId === 22}
-          onClick={() =>
-            scores && handleHelp({ type: "map", id: 22 })
+          onClick={(e) =>
+            scores && logsHint(e) || handleHelp({ type: "map", id: 22 })
           }
         >
           {laguageVariation['CaptureOfTheInitialTerritory']}
@@ -75,8 +76,8 @@ const Help = ({
 
         <HelpItem
           active={activeHelpId === 1}
-          onClick={() =>
-            scores && handleHelp({ type: "single", id: 1, count: 1 })
+          onClick={(e) =>
+            scores && logsHint(e) || handleHelp({ type: "single", id: 1, count: 1 })
           }
         >
           {laguageVariation['BestMove']}
@@ -84,8 +85,8 @@ const Help = ({
 		
 		<HelpItem
           active={activeHelpId === 31}
-          onClick={() =>
-            scores && handleHelp({ type: "futuredGame", id: 31, count: 4 })
+          onClick={(e) =>
+            scores && logsHint(e) || handleHelp({ type: "futuredGame", id: 31, count: 4 })
           }
         >
           {laguageVariation['GameDevelopment4']}
@@ -94,24 +95,24 @@ const Help = ({
 		
 		<HelpItem
           active={activeHelpId === 2}
-          onClick={() =>
-            scores && handleHelp({ type: "single_war", id: 2, count: 1 })
+          onClick={(e) =>
+            scores && logsHint(e) || handleHelp({ type: "single_war", id: 2, count: 1 })
           }
         >
           {laguageVariation['TheOpponentsBestMove']}
         </HelpItem>
         <HelpItem
           active={activeHelpId === HEATMAP_FULL}
-          onClick={() =>
-            scores && handleHelp({ type: "map", id: HEATMAP_FULL })
+          onClick={(e) =>
+            scores && logsHint(e) || handleHelp({ type: "map", id: HEATMAP_FULL })
           }
         >
           {laguageVariation['HeatmapDetailed']}
         </HelpItem>
         <HelpItem
           active={activeHelpId === 16}
-          onClick={() =>
-            scores &&
+          onClick={(e) =>
+            scores && logsHint(e) ||
             handleHelp({ type: "multiple", multipleHandleCount: 4, id: 16 })
           }
         >
@@ -121,16 +122,16 @@ const Help = ({
 		
         <HelpItem
           active={activeHelpId === HEATMAP_ZONE_QUARTER}
-          onClick={() =>
-            scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER })
+          onClick={(e) =>
+            scores && logsHint(e) || handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER })
           }
         >
           {laguageVariation['WhichQuarter']}
         </HelpItem>
 		<HelpItem
           active={activeHelpId === 24}
-          onClick={() =>
-            scores && handleHelp({ type: "map", id: 24 })
+          onClick={(e) =>
+            scores && logsHint(e) || handleHelp({ type: "map", id: 24 })
           }
         >
           {laguageVariation['TheBetterHalf']}
@@ -138,8 +139,8 @@ const Help = ({
 		
 		<HelpItem
           active={activeHelpId === HEATMAP_ZONE_QUARTER_ONE}
-          onClick={() =>
-			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 1 })
+          onClick={(e) =>
+			scores && logsHint(e) || handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 1 })
           }
         >
           {laguageVariation['Heatmap1']}
@@ -147,24 +148,24 @@ const Help = ({
 		
 		<HelpItem
           active={activeHelpId === 3}
-          onClick={() =>
-			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 2 })
+          onClick={(e) =>
+			scores && logsHint(e) || handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 2 })
           }
         >
           {laguageVariation['Heatmap2']}
         </HelpItem>
 		<HelpItem
           active={activeHelpId === 4}
-          onClick={() =>
-			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 3 })
+          onClick={(e) =>
+			scores && logsHint(e) || handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 3 })
           }
         >
           {laguageVariation['Heatmap3']}
         </HelpItem>
 		<HelpItem
           active={activeHelpId === 5}
-          onClick={() =>
-			scores && handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 4 })
+          onClick={(e) =>
+			scores && logsHint(e) || handleHelp({ type: "map", id: HEATMAP_ZONE_QUARTER_ONE, count: 4 })
           }
         >
           {laguageVariation['Heatmap4']}
@@ -173,7 +174,7 @@ const Help = ({
 		
         <HelpItem
           active={activeHelpId === 34}
-          onClick={() => scores && handleHelp({ type: "score", id: 34 })}
+          onClick={(e) => scores && logsHint(e) || handleHelp({ type: "score", id: 34 })}
         >
          {laguageVariation['WhoWinning']}
         </HelpItem>
@@ -183,47 +184,6 @@ const Help = ({
 };
 
 
-const Scenarius = ({
-  enemyPass,
-  stepColor,
-  yourColor,
-  you,
-  opponent,
-  stepMain,
-  stepTwo,
-  handleHelp,
-  activeHelpId,
-  scores,
-  times,
-  hint,
-  setHint,
-  setResign
-}) => {
-return (
-  <Wrapper>
-    <Players
-      enemyPass={enemyPass}
-      opponent={opponent}
-      you={you}
-      stepColor={stepColor}
-      yourColor={yourColor}
-      stepMain={stepMain}
-      stepTwo={stepTwo}
-      times={times}
-    />
-     <TabsHelp hint={hint} setHint={setHint} setResign={setResign}/>
-    <HelpWrapper>
-    <HelpItem
-        active={activeHelpId === 22}
-        onClick={() =>
-          scores && handleHelp({ type: "map", id: 22 })
-        }
-      >
-        {laguageVariation['CaptureOfTheInitialTerritory']}
-      </HelpItem>
-    </HelpWrapper>
-  </Wrapper>
-);
-};
+
 
 export default Help;
