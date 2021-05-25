@@ -123,4 +123,4 @@ routes.js - Роутинг,все роты приватные, выкидыва�
 Скачайте [презентацию по ссылке](https://drive.google.com/file/d/1kh1KT-SWENw-3rmLKGUcfRJSygtw1vXR/view?usp=sharing)
 
 ## Видео-демонстрация работоспособности
-[![Видео-демонстрация работоспособности](https://i9.ytimg.com/vi/IA1haUe_OL8/mq2.jpg)](https://www.youtube.com/watch?v=IA1haUe_OL8)
+[![Видео-демонстрация работоспособности](https://img.youtube.com/vi/IA1haUe_OL8/maxresdefault.jpg)](https://www.youtube.com/watch?v=IA1haUe_OL8)
