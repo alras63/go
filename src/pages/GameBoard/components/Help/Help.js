@@ -9,6 +9,9 @@ import {
 } from "./types";
 import { laguageVariation } from "../../../../language";
 import { isMobile } from "react-device-detect";
+/*Отвечает за тултипы */
+import ReactTooltip from 'react-tooltip';
+
 
 const Wrapper = styled.div`
   width: 90%;
@@ -65,7 +68,10 @@ const Help = ({
       />
        <TabsHelp hint={hint} setHint={setHint} setResign={setResign}/>
       <HelpWrapper>
+        {/*Для тултипа у кнопки указывается data-tip и data-for */}
       <HelpItem
+          data-tip 
+          data-for={laguageVariation['CaptureOfTheInitialTerritory']}
           active={activeHelpId === 22}
           onClick={(e) =>
             scores && logsHint(e) || handleHelp({ type: "map", id: 22 })
@@ -73,6 +79,12 @@ const Help = ({
         >
           {laguageVariation['CaptureOfTheInitialTerritory']}
         </HelpItem>
+        
+        {/*Сам тултип указывается id как и data-for у кнопки. Внутри компонента тултипа указывается описание */}
+
+        <ReactTooltip id={laguageVariation['CaptureOfTheInitialTerritory']} type='success'>
+          Описание сценария/Подсказки. Мультиязычное!
+        </ReactTooltip>
 
         <HelpItem
           active={activeHelpId === 1}

@@ -215,7 +215,7 @@ const Board = ({
       setStonePosition(stonePosition)
       //setCoordinates({ ...coordinates, [stonePosition]: currentColor });
       setCurrentColor(currentColor === "white" ? "black" : "white");
-      setHint(false);
+      //setHint(false);
       dispatch(markersClear());
       setHelpType("");
       setActiveHelpId("");
@@ -263,7 +263,15 @@ const Board = ({
 
         <ButtonsBoard>
         <Text onClick={() => setPass()}>{laguageVariation['Pass']}</Text>
-            <Text onClick={() => setResign()}>{laguageVariation['Surrender']}</Text>
+        
+        <Text onClick={function(){
+          var isResign = window.confirm(
+            "Уверены что хотите сдаться?"
+          );
+          if(isResign){
+            setResign()
+          }
+        }}>{laguageVariation['Surrender']}</Text>
         </ButtonsBoard>
     </Wrapper>
   );

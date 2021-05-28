@@ -23,9 +23,21 @@ const TabsHelp = ({ hint,stepColor, enemyPass, yourColor, you, opponent, turns, 
     setResign }) => {
   return (
     <Wrapper>
-          <ButtonTabs onClick={() => setHint('hint')}>{laguageVariation['Hints']}</ButtonTabs>
-          <ButtonTabs onClick={() => setHint('123')}>{laguageVariation['Scenarios']}</ButtonTabs>
-          <ButtonTabs onClick={() => setHint('')}>{laguageVariation['GameProgress']}</ButtonTabs>
+          <ButtonTabs onClick={() => setHint('hint')} 
+          style={{
+            backgroundColor: (hint == 'hint') ? "#b4916c" : ''
+          }}
+          >{laguageVariation['Hints']}</ButtonTabs>
+          <ButtonTabs onClick={() => setHint('123')}
+                    style={{
+                      backgroundColor: (hint == '123') ? "#b4916c" : ''
+                    }}
+          >{laguageVariation['Scenarios']}</ButtonTabs>
+          <ButtonTabs onClick={() => setHint('')}
+                    style={{
+                      backgroundColor: (hint == '') ? "#b4916c" : ''
+                    }}
+          >{laguageVariation['GameProgress']}</ButtonTabs>
     </Wrapper>
   );
 };

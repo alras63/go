@@ -29,19 +29,20 @@ export const viewDih = function(stonePosition, coordinates, yourColor){
     console.log(figures);
     for(var i= 0; i< dihanieFinish.length; i++){
       console.log(dihanieFinish[i]);
-      
-      if(dihanieFinish[i].length < 2){
-        for(var kam=0; kam < figures[i].length; kam++){
-          var elements = document.getElementsByClassName(figures[i][kam]);
-          for (var index = 0; index < elements.length; ++index) {
-            elements[index].setAttribute('r', 13);
+      if(dihanieFinish[i] !== undefined){
+        if(dihanieFinish[i].length < 2){
+          for(var kam=0; kam < figures[i].length; kam++){
+            var elements = document.getElementsByClassName(figures[i][kam]);
+            for (var index = 0; index < elements.length; ++index) {
+              elements[index].setAttribute('r', 13);
+            }
           }
-        }
-      } else {
-        for(var kam=0; kam < figures[i].length; kam++){
-          var elements = document.getElementsByClassName(figures[i][kam]);
-          for (var index = 0; index < elements.length; ++index) {
-            elements[index].setAttribute('r', 19);
+        } else {
+          for(var kam=0; kam < figures[i].length; kam++){
+            var elements = document.getElementsByClassName(figures[i][kam]);
+            for (var index = 0; index < elements.length; ++index) {
+              elements[index].setAttribute('r', 19);
+            }
           }
         }
       }
@@ -54,10 +55,12 @@ export const viewDih = function(stonePosition, coordinates, yourColor){
                     figures.push([stone]);
             }
             var sosedi = getSosediForDih(stone,yourColor);
-                    
+            //console.log(stone, sosedi);
             for(var sos = 0; sos < sosedi.length; sos++){
               numberfigure = checkStoneOnFigures(stone);
+              console.log(stone, sosedi[sos], testCordsForDih[sosedi[sos]]);
               if(checkStoneOnFigures(sosedi[sos]) === false){
+                
                 if(testCordsForDih[sosedi[sos]] === undefined){
                   if(dihanie[numberfigure] == undefined){
                     dihanie[numberfigure] = [];
@@ -74,7 +77,7 @@ export const viewDih = function(stonePosition, coordinates, yourColor){
                 } else if (testCordsForDih[sosedi[sos]] === yourColor){
                   console.log(numberfigure);
                   figures[numberfigure].push(sosedi[sos]);
-                  checkStone(sosedi[sos]);
+                  checkStone(sosedi[sos], yourColor);
                 }
               }
             }
