@@ -146,16 +146,17 @@ const GameBoard = ({ history }) => {
   }, []);
 
   client.onmessage = function (e) {
-    //console.log(e);
+    let jsonData = JSON.parse(e.data);
+    console.log('HUPHUPHUP');
     var isAdmin = false;
     setEnemyPass(false);
     if (typeof e.data === "string") {
-      let jsonData = JSON.parse(e.data);
       if (jsonData.payload) {
         if (jsonData.payload.currentMap) {
           setCoordinates(mapMap(jsonData.payload.currentMap));
+          //viewDih(false, mapMap(jsonData.payload.currentMap), yourColor); 
           if (countSteps < stepMain) {
-            viewDih(false, mapMap(jsonData.payload.currentMap), yourColor);
+            
             countSteps++;
             if (countSteps == startStep) {
               isAdmin = window.confirm(
@@ -222,6 +223,13 @@ const GameBoard = ({ history }) => {
           });
         }
       }
+    }
+    console.log("TEST UP");
+    if(jsonData.payload !== undefined){
+      if (jsonData.payload.currentMap) {
+        viewDih(false, mapMap(jsonData.payload.currentMap), jsonData.payload.player === "w" ? "white" : "black"); 
+      }
+      //alert('123');
     }
     dispatch(setBlocked(false));
     if (isAdmin === true) {

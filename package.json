@@ -17,6 +17,7 @@
     "react-router-dom": "^5.2.0",
     "react-saga": "^0.3.1",
     "react-scripts": "4.0.3",
+    "react-tooltip": "^4.2.20",
     "reactjs-autobahn": "1.8.19",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
