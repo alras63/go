@@ -195,11 +195,14 @@ const Board = ({
       alpha[numberColumn]+(rowStep-1)
     ];
     var captures = getCapturedPoints(stonePosition, sosedi);
+
+    //Просчёт убийства в фигуре. 
+    //console.log();
+    
+    var resKillsSamo = viewDih(stonePosition, coordinates, yourColor, true);
+
     if(
-         (numberColumn == 0 || (coordinates[alpha[numberColumn-1]+rowStep] !== undefined && coordinates[alpha[numberColumn-1]+rowStep] == colorVrag)) &&
-         (numberColumn == 12 || (coordinates[alpha[numberColumn+1]+rowStep] !== undefined && coordinates[alpha[numberColumn+1]+rowStep] == colorVrag)) &&
-         (rowStep == 13 || (coordinates[alpha[numberColumn]+(rowStep+1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep+1)] == colorVrag)) &&
-         (rowStep == 1 || (coordinates[alpha[numberColumn]+(rowStep-1)] !== undefined && coordinates[alpha[numberColumn]+(rowStep-1)] == colorVrag)) &&
+          resKillsSamo &&
          captures.length == 0
      ){
         valid = false;
