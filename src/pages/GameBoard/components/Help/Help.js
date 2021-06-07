@@ -68,25 +68,9 @@ const Help = ({
       <TabsHelp hint={hint} setHint={setHint} setResign={setResign} />
       <HelpWrapper>
         {/*Для тултипа у кнопки указывается data-tip и data-for */}
-        <HelpItem
-          data-tip
-          data-for={laguageVariation["CaptureOfTheInitialTerritory"]}
-          active={activeHelpId === 22}
-          onClick={(e) =>
-            (scores && logsHint(e)) || handleHelp({ type: "map", id: 22 })
-          }
-        >
-          {laguageVariation["CaptureOfTheInitialTerritory"]}
-        </HelpItem>
-
+       
         {/*Сам тултип указывается id как и data-for у кнопки. Внутри компонента тултипа указывается описание */}
 
-        <ReactTooltip
-          id={laguageVariation["CaptureOfTheInitialTerritory"]}
-          type="success"
-        >
-          scenarii
-        </ReactTooltip>
 
         <HelpItem
           data-tip

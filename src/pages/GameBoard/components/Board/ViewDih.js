@@ -1,11 +1,11 @@
 let figures = [];
 let dihanie = [];
 let dihanieFinish = [];
-
+ 
 
 var testCordsForDih = {};
 
-export const viewDih = function(stonePosition, coordinates, yourColor){
+export const viewDih = function(stonePosition, coordinates, yourColor, samoKill = false){
     figures = [];
     dihanie = [];
     dihanieFinish = [];
@@ -26,22 +26,42 @@ export const viewDih = function(stonePosition, coordinates, yourColor){
         }
     }
   
-    console.log(figures);
-    for(var i= 0; i< dihanieFinish.length; i++){
-      console.log(dihanieFinish[i]);
-      if(dihanieFinish[i] !== undefined){
-        if(dihanieFinish[i].length < 2){
-          for(var kam=0; kam < figures[i].length; kam++){
-            var elements = document.getElementsByClassName(figures[i][kam]);
-            for (var index = 0; index < elements.length; ++index) {
-              elements[index].setAttribute('r', 13);
-            }
+    if(samoKill){
+      var samoKillsFigures = false;
+
+      for(var i = 0; i < figures.length; i++){
+        for(var kam=0; kam < figures[i].length; kam++){
+          if(figures[i][kam] == stonePosition){
+            samoKillsFigures = i;
           }
-        } else {
-          for(var kam=0; kam < figures[i].length; kam++){
-            var elements = document.getElementsByClassName(figures[i][kam]);
-            for (var index = 0; index < elements.length; ++index) {
-              elements[index].setAttribute('r', 19);
+        }
+      }
+
+      if(samoKillsFigures !== false && (dihanieFinish[samoKillsFigures] === undefined || dihanieFinish[samoKillsFigures].length == 0)){
+        return true;
+      } else {
+          return false;
+      }
+
+      return {figures, dihanieFinish};
+    } else {
+      console.log(figures);
+      for(var i= 0; i< dihanieFinish.length; i++){
+        console.log(dihanieFinish[i]);
+        if(dihanieFinish[i] !== undefined){
+          if(dihanieFinish[i].length < 2){
+            for(var kam=0; kam < figures[i].length; kam++){
+              var elements = document.getElementsByClassName(figures[i][kam]);
+              for (var index = 0; index < elements.length; ++index) {
+                elements[index].setAttribute('r', 13);
+              }
+            }
+          } else {
+            for(var kam=0; kam < figures[i].length; kam++){
+              var elements = document.getElementsByClassName(figures[i][kam]);
+              for (var index = 0; index < elements.length; ++index) {
+                elements[index].setAttribute('r', 19);
+              }
             }
           }
         }

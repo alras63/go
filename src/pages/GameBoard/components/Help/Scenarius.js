@@ -9,6 +9,7 @@ import {
 } from "./types";
 import { laguageVariation } from "../../../../language";
 import { isMobile } from "react-device-detect";
+import ReactTooltip from "react-tooltip";
 
 const Wrapper = styled.div`
   width: 90%;
@@ -215,7 +216,9 @@ return (
     />
      <TabsHelp hint={hint} setHint={setHint} setResign={setResign}/>
     <HelpWrapper>
-    <HelpItem
+      <HelpItem
+        data-tip
+        data-for={laguageVariation["CaptureOfTheInitialTerritoryDes"]}
         active={activeHelpId === 22}
         onClick={(e) =>
           scores && logsHint(e) || handleHelp({ type: "map", id: 22 })
@@ -223,7 +226,19 @@ return (
       >
         {laguageVariation['CaptureOfTheInitialTerritory']}
       </HelpItem>
+
+      
+      <ReactTooltip
+          id={laguageVariation["CaptureOfTheInitialTerritoryDes"]}
+          type="success"
+        >
+          {laguageVariation['CaptureOfTheInitialTerritoryDes']}
+        </ReactTooltip>
+
+
       <HelpItem
+        data-tip
+        data-for={laguageVariation["TwoquarterattackDes"]}
         active={activeHelpId === 221}
         onClick={(e) =>
           scores && logsHint(e) || handleHelp({ type: "map", id: 221 })
@@ -231,9 +246,17 @@ return (
       >
         {laguageVariation['Twoquarterattack']}
       </HelpItem>
+      <ReactTooltip
+          id={laguageVariation["TwoquarterattackDes"]}
+          type="success"
+        >
+          {laguageVariation['TwoquarterattackDes']}
+        </ReactTooltip>
     </HelpWrapper>
     <HelpWrapper>
     <HelpItem
+        data-tip
+        data-for={laguageVariation["ProtectionDes"]}
         active={activeHelpId === 223}
         onClick={(e) =>
           scores && logsHint(e) || handleHelp({ type: "map", id: 223 })
@@ -241,9 +264,17 @@ return (
       >
         {laguageVariation['Protection']}
       </HelpItem>
+      <ReactTooltip
+          id={laguageVariation["ProtectionDes"]}
+          type="success"
+        >
+          {laguageVariation['ProtectionDes']}
+        </ReactTooltip>
     </HelpWrapper>
     <HelpWrapper>
     <HelpItem
+        data-tip
+        data-for={laguageVariation["KeepPlayingDes"]}
         active={activeHelpId === 224}
         onClick={(e) =>
           scores && logsHint(e) || handleHelp({ type: "map", id: 224 })
@@ -251,6 +282,12 @@ return (
       >
         {laguageVariation['KeepPlaying']}
       </HelpItem>
+      <ReactTooltip
+          id={laguageVariation["KeepPlayingDes"]}
+          type="success"
+        >
+          {laguageVariation['KeepPlayingDes']}
+        </ReactTooltip>
     </HelpWrapper>
   </Wrapper>
 );
